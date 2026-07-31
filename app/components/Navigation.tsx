@@ -17,6 +17,7 @@ export function Navigation() {
           <span /><span />
         </button>
         <nav className={open ? "nav-links is-open" : "nav-links"} aria-label="Primary navigation">
+          <Link href="/" onClick={() => setOpen(false)}>Home</Link>
           <Link href="/technology" onClick={() => setOpen(false)}>Technology</Link>
           <Link href="/roadmap" onClick={() => setOpen(false)}>Roadmap</Link>
           <Link href="/about" onClick={() => setOpen(false)}>About</Link>

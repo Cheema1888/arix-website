@@ -5,7 +5,7 @@ type BrandLogoProps = {
 export function BrandLogo({ large = false }: BrandLogoProps) {
   return (
     <span className={large ? "brand-logo brand-logo-large" : "brand-logo"} aria-hidden="true">
-      <img src="/arix-logo-source.png" alt="" />
+      <img src="/arix-logo.png" alt="" />
     </span>
   );
 }

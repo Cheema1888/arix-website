@@ -14,7 +14,7 @@ export function ThemeToggle() {
   function toggleTheme() {
     const nextTheme: Theme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
     document.documentElement.dataset.theme = nextTheme;
-    localStorage.setItem("arix-theme", nextTheme);
+    localStorage.setItem("arix-theme-v2", nextTheme);
     setTheme(nextTheme);
   }
 

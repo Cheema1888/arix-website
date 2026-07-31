@@ -27,5 +27,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var saved=localStorage.getItem('arix-theme');var theme=saved==='light'||saved==='dark'?saved:(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=theme;}catch(e){document.documentElement.dataset.theme='dark';}})();` }} /></head><body className={`${geistSans.variable} ${geistMono.variable}`}><Navigation />{children}<Footer /></body></html>;
+  return <html lang="en" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var saved=localStorage.getItem('arix-theme-v2');document.documentElement.dataset.theme=saved==='dark'?'dark':'light';}catch(e){document.documentElement.dataset.theme='light';}})();` }} /></head><body className={`${geistSans.variable} ${geistMono.variable}`}><Navigation />{children}<Footer /></body></html>;
 }

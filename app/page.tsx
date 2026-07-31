@@ -3,10 +3,10 @@ import Image from "next/image";
 import { FieldScanner } from "./components/FieldScanner";
 
 const pipeline = [
-  { number: "01", title: "Survey", text: "A manually piloted drone captures high-resolution crop imagery across the field." },
-  { number: "02", title: "Detect", text: "A laptop-based AI pipeline identifies healthy wheat and priority disease classes." },
-  { number: "03", title: "Map", text: "Imagery and flight logs are synchronized into a geo-referenced disease heat map." },
-  { number: "04", title: "Act", text: "The grower receives a clear report that turns crop signals into focused field decisions." },
+  { number: "01", visual: "survey", title: "Survey", text: "A manually piloted drone captures high-resolution crop imagery across the field." },
+  { number: "02", visual: "detect", title: "Detect", text: "A laptop-based AI pipeline identifies healthy wheat and priority disease classes." },
+  { number: "03", visual: "map", title: "Map", text: "Imagery and flight logs are synchronized into a geo-referenced disease heat map." },
+  { number: "04", visual: "act", title: "Act", text: "The grower receives a clear report that turns crop signals into focused field decisions." },
 ];
 
 export default function Home() {
@@ -51,7 +51,7 @@ export default function Home() {
         <div className="pipeline-grid">
           {pipeline.map((item) => (
             <article className="pipeline-card" key={item.number}>
-              <span>{item.number}</span><div className="pipeline-pulse" aria-hidden="true" />
+              <span>{item.number}</span><div className={`pipeline-visual ${item.visual}`} aria-hidden="true">{Array.from({ length: 9 }, (_, index) => <i key={index} />)}<b /></div>
               <h3>{item.title}</h3><p>{item.text}</p>
             </article>
           ))}
