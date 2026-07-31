@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FieldScanner } from "./components/FieldScanner";
 
 const pipeline = [
@@ -83,7 +84,7 @@ export default function Home() {
       </section>
 
       <section className="vision-band">
-        <div className="vision-media"><video autoPlay muted loop playsInline preload="metadata"><source src="/arix-field-loop.mp4" type="video/mp4" /></video></div>
+        <div className="vision-media"><Image src="/arix-drone-concept.png" alt="ARIX concept drone scanning a wheat field at golden hour" fill sizes="(max-width: 980px) 100vw, 54vw" /></div>
         <div className="vision-copy"><p className="section-index">05 / The path forward</p><h2>Prove the intelligence.<br />Then automate the response.</h2><p>MVP-A validates manual survey, post-flight detection, geo-referencing, heat maps, and reporting. MVP-B introduces waypoint autonomy and onboard processing.</p><Link className="button button-primary" href="/roadmap">View the roadmap <span>→</span></Link></div>
       </section>
 
