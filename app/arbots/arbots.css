@@ -212,6 +212,121 @@
 .arbots-team-mission blockquote { max-width: 1040px; margin: 28px 0 0; font-size: clamp(38px,5vw,70px); line-height: 1.08; letter-spacing: -.045em; }
 .arbots-back-product { display: flex; justify-content: space-between; align-items: center; gap: 70px; }
 
+/* Product page v2: a deliberately simpler, scroll-led Arbots X story. */
+.arbots-simple { background: #030509; }
+.arbots-xx-hero { position: relative; min-height: 100svh; padding-top: 78px; overflow: hidden; display: grid; place-items: center; background: radial-gradient(circle at 50% 44%, rgba(65,199,255,.14), transparent 25%), radial-gradient(circle at 50% 45%, rgba(140,113,255,.08), transparent 48%), #030509; }
+.arbots-star-field { position: absolute; inset: 0; opacity: .54; background-image: radial-gradient(circle at 16% 23%, rgba(255,255,255,.9) 0 1px, transparent 1.4px), radial-gradient(circle at 76% 31%, rgba(65,199,255,.9) 0 1px, transparent 1.5px), radial-gradient(circle at 43% 72%, rgba(255,255,255,.7) 0 1px, transparent 1.4px), radial-gradient(circle at 87% 76%, rgba(140,113,255,.9) 0 1px, transparent 1.5px); background-size: 260px 260px, 340px 340px, 310px 310px, 400px 400px; mask-image: linear-gradient(to bottom, black 10%, transparent 96%); }
+.arbots-double-x { position: absolute; z-index: 1; left: 50%; top: 46%; width: min(1040px, 84vw); height: min(650px, 66vw); transform: translate(-50%,-50%); filter: drop-shadow(0 0 25px rgba(65,199,255,.32)) drop-shadow(0 0 80px rgba(65,199,255,.16)); animation: arbotsXBreathe 4.8s ease-in-out infinite; }
+.arbots-double-x span { position: absolute; top: 50%; color: transparent; -webkit-text-stroke: 3px rgba(161,226,255,.8); font-size: clamp(390px, 49vw, 720px); font-weight: 760; line-height: .72; text-shadow: inset 0 0 20px rgba(65,199,255,.5), 0 0 30px rgba(65,199,255,.4), 0 0 100px rgba(65,199,255,.22); }
+.arbots-double-x span:first-child { left: 28%; transform: translate(-50%,-50%) rotate(-4deg); }
+.arbots-double-x span:last-child { left: 72%; transform: translate(-50%,-50%) rotate(4deg); }
+@keyframes arbotsXBreathe { 50% { opacity: .74; filter: drop-shadow(0 0 40px rgba(65,199,255,.48)) drop-shadow(0 0 115px rgba(140,113,255,.24)); } }
+.arbots-xx-robot { position: absolute; z-index: 5; left: 50%; top: 46%; transform: translate(-50%,-50%) scale(.88); }
+.arbots-xx-copy { position: absolute; z-index: 8; left: max(32px, calc((100vw - 1240px) / 2)); bottom: 55px; width: min(480px, calc(100% - 64px)); }
+.arbots-xx-copy h1 { margin: 16px 0 0; font-size: clamp(60px, 7vw, 108px); line-height: .84; letter-spacing: -.075em; text-transform: uppercase; }
+.arbots-xx-copy h1 em { color: var(--ab-blue); font-style: normal; text-shadow: 0 0 34px rgba(65,199,255,.34); }
+.arbots-xx-copy > p:not(.arbots-kicker) { max-width: 410px; margin: 21px 0 0; color: #acb8c5; font-size: 16px; line-height: 1.6; }
+.arbots-simple-scroll { position: absolute; z-index: 8; right: 38px; bottom: 58px; display: flex; align-items: center; gap: 14px; color: var(--ab-muted); font-family: var(--font-geist-mono), monospace; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
+.arbots-simple-scroll i { width: 48px; height: 1px; background: var(--ab-blue); }
+
+.arbots-roll-section { position: relative; padding: 150px 0 220px; overflow: clip; background: linear-gradient(#030509,#070b13 30%,#05070b); }
+.arbots-roll-intro { position: relative; z-index: 2; margin-bottom: 90px; }
+.arbots-roll-intro h2, .arbots-specs h2, .arbots-survey-intro h2 { margin: 0; font-size: clamp(52px,7vw,98px); line-height: .9; letter-spacing: -.065em; text-transform: uppercase; }
+.arbots-roll-intro h2 span, .arbots-specs h2 span, .arbots-survey-intro h2 span { color: var(--ab-blue); }
+.arbots-roll-deck { width: min(980px, calc(100% - 64px)); margin-inline: auto; }
+.arbots-roll-card { position: sticky; top: 105px; min-height: min(650px, calc(100svh - 130px)); margin-bottom: 24vh; padding: 38px 42px 46px; display: grid; grid-template-rows: auto 1fr auto; overflow: hidden; border: 1px solid rgba(133,211,255,.3); border-radius: 28px; background: radial-gradient(circle at 76% 27%, rgba(65,199,255,.13), transparent 28%), linear-gradient(145deg,rgba(15,24,36,.98),rgba(5,8,13,.98)); box-shadow: 0 35px 90px rgba(0,0,0,.55), inset 0 1px rgba(255,255,255,.04); transform-origin: 50% 110%; }
+.arbots-roll-card:nth-child(2) { top: 113px; background: radial-gradient(circle at 70% 30%, rgba(140,113,255,.15), transparent 30%), linear-gradient(145deg,#101421,#05070c); }
+.arbots-roll-card:nth-child(3) { top: 121px; background: radial-gradient(circle at 72% 30%, rgba(65,199,255,.12), transparent 30%), linear-gradient(145deg,#0b1720,#05080d); }
+.arbots-roll-card:nth-child(4) { top: 129px; margin-bottom: 0; background: radial-gradient(circle at 72% 30%, rgba(255,255,255,.08), transparent 30%), linear-gradient(145deg,#11151c,#05070b); }
+.arbots-roll-card:after { content: ""; position: absolute; inset: 0; opacity: .22; background-image: linear-gradient(rgba(65,199,255,.08) 1px, transparent 1px), linear-gradient(90deg,rgba(65,199,255,.08) 1px,transparent 1px); background-size: 60px 60px; mask-image: linear-gradient(110deg,transparent,black); pointer-events: none; }
+.arbots-roll-card-top { position: relative; z-index: 2; display: flex; justify-content: space-between; color: var(--ab-blue); font-family: var(--font-geist-mono), monospace; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; }
+.arbots-roll-glyph { position: relative; z-index: 2; align-self: center; justify-self: center; color: var(--ab-blue); font-family: var(--font-geist-mono), monospace; font-size: clamp(80px,12vw,160px); text-shadow: 0 0 24px rgba(65,199,255,.65), 0 0 70px rgba(65,199,255,.28); }
+.arbots-roll-card > div:last-child { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr .8fr; align-items: end; gap: 60px; }
+.arbots-roll-card h3 { max-width: 600px; margin: 0; font-size: clamp(39px,5vw,69px); line-height: .94; letter-spacing: -.055em; text-transform: uppercase; }
+.arbots-roll-card p { margin: 0; color: var(--ab-muted); font-size: 15px; line-height: 1.68; }
+
+.arbots-specs { padding: 170px 0; border-block: 1px solid var(--ab-line); background: radial-gradient(circle at 18% 42%,rgba(65,199,255,.1),transparent 25%),#070a10; }
+.arbots-specs .arbots-shell { display: grid; grid-template-columns: .9fr 1.1fr; gap: 100px; align-items: start; }
+.arbots-specs-heading { position: sticky; top: 130px; }
+.arbots-specs-heading > p:last-child { max-width: 560px; margin: 30px 0 0; color: var(--ab-muted); line-height: 1.7; }
+.arbots-spec-list { margin: 0; border-top: 1px solid var(--ab-line); }
+.arbots-spec-list div { min-height: 138px; display: grid; grid-template-columns: .72fr 1.28fr; gap: 30px; align-items: center; border-bottom: 1px solid var(--ab-line); }
+.arbots-spec-list dt { color: var(--ab-blue); font-family: var(--font-geist-mono), monospace; font-size: 8px; letter-spacing: .13em; text-transform: uppercase; }
+.arbots-spec-list dd { margin: 0; font-size: clamp(20px,2.2vw,31px); line-height: 1.15; letter-spacing: -.03em; text-transform: uppercase; }
+
+.arbots-survey-section { padding: 170px 0; background: linear-gradient(135deg,#06111a,#05070b 45%,#0c0918); }
+.arbots-survey-layout { display: grid; grid-template-columns: .65fr 1.35fr; gap: 85px; align-items: start; }
+.arbots-survey-intro { position: sticky; top: 130px; }
+.arbots-survey-intro > p:last-child { max-width: 440px; margin-top: 28px; color: var(--ab-muted); line-height: 1.7; }
+.arbots-survey-card { position: relative; padding: 42px; border: 1px solid rgba(133,211,255,.25); border-radius: 24px; background: rgba(8,13,21,.82); box-shadow: 0 30px 100px rgba(0,0,0,.3); backdrop-filter: blur(16px); }
+.arbots-survey-progress { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 22px; margin-bottom: 42px; color: var(--ab-blue); font-family: var(--font-geist-mono), monospace; font-size: 8px; letter-spacing: .13em; text-transform: uppercase; }
+.arbots-survey-progress i { height: 2px; overflow: hidden; background: rgba(65,199,255,.12); }
+.arbots-survey-progress b { display: block; height: 100%; background: var(--ab-blue); box-shadow: 0 0 12px var(--ab-blue); transition: width .35s ease; }
+.arbots-survey-step { display: grid; gap: 48px; }
+.arbots-survey-card fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.arbots-survey-card legend { width: 100%; margin-bottom: 20px; color: var(--ab-text); font-size: 18px; font-weight: 600; line-height: 1.4; }
+.arbots-survey-card legend small { display: block; margin-bottom: 7px; color: var(--ab-blue); font-family: var(--font-geist-mono), monospace; font-size: 8px; letter-spacing: .13em; }
+.arbots-question-note { margin: -12px 0 18px; color: var(--ab-muted); font-size: 11px; }
+.arbots-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+.arbots-options label { min-height: 52px; display: flex; align-items: center; padding: 13px 15px; border: 1px solid var(--ab-line); border-radius: 9px; color: #aab5c1; cursor: pointer; font-size: 12px; line-height: 1.35; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease; }
+.arbots-options label:hover { border-color: rgba(65,199,255,.48); transform: translateY(-1px); }
+.arbots-options label.is-selected { border-color: var(--ab-blue); color: var(--ab-text); background: rgba(65,199,255,.09); box-shadow: inset 0 0 20px rgba(65,199,255,.04); }
+.arbots-options label[data-disabled] { opacity: .34; cursor: not-allowed; transform: none; }
+.arbots-options input, .arbots-scale input { position: absolute; opacity: 0; pointer-events: none; }
+.arbots-options label span:before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 9px; border: 1px solid #627181; border-radius: 50%; transition: .2s ease; }
+.arbots-options.is-checkbox label span:before { border-radius: 2px; }
+.arbots-options label.is-selected span:before { border-color: var(--ab-blue); background: var(--ab-blue); box-shadow: 0 0 9px rgba(65,199,255,.72); }
+.arbots-scale { display: grid; grid-template-columns: repeat(5,1fr); gap: 8px; }
+.arbots-scale label { min-height: 58px; display: grid; place-items: center; border: 1px solid var(--ab-line); border-radius: 9px; color: var(--ab-muted); cursor: pointer; }
+.arbots-scale label.is-selected { border-color: var(--ab-blue); color: var(--ab-on-blue); background: var(--ab-blue); box-shadow: 0 0 22px rgba(65,199,255,.18); }
+.arbots-scale-labels { display: flex; justify-content: space-between; margin-top: 8px; color: #657382; font-size: 9px; }
+.arbots-other-input { width: 100%; height: 52px; margin-top: 9px; padding: 0 15px; border: 1px solid var(--ab-line); border-radius: 9px; outline: 0; background: #05080d; color: white; }
+.arbots-other-input:focus { border-color: var(--ab-blue); }
+.arbots-survey-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 42px; padding-top: 25px; border-top: 1px solid var(--ab-line); }
+.arbots-survey-actions button { min-height: 52px; padding: 0 18px; border-radius: 8px; cursor: pointer; font-family: var(--font-geist-mono), monospace; font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.arbots-survey-back { border: 1px solid var(--ab-line); background: transparent; color: var(--ab-muted); }
+.arbots-survey-next { min-width: 180px; display: flex; align-items: center; justify-content: space-between; gap: 30px; border: 1px solid var(--ab-blue); background: var(--ab-blue); color: var(--ab-on-blue); }
+.arbots-survey-next:disabled { opacity: .6; cursor: progress; }
+.arbots-form-message { margin: 22px 0 0; color: var(--ab-blue); font-size: 12px; }.arbots-form-message.is-error { color: #ff8989; }
+.arbots-privacy-note { margin: 18px 0 0; color: #657382; font-size: 10px; line-height: 1.5; }
+.arbots-honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; }
+.arbots-survey-success { min-height: 540px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.arbots-survey-success > span { width: 64px; height: 64px; display: grid; place-items: center; margin-bottom: 30px; border: 1px solid var(--ab-blue); border-radius: 50%; color: var(--ab-blue); font-size: 24px; box-shadow: 0 0 30px rgba(65,199,255,.15); }
+.arbots-survey-success h3 { margin: 12px 0; font-size: clamp(38px,5vw,64px); line-height: .95; letter-spacing: -.05em; text-transform: uppercase; }
+.arbots-survey-success > p:last-child { max-width: 460px; color: var(--ab-muted); line-height: 1.7; }
+
+@media (max-width: 900px) {
+  .arbots-double-x { width: 100vw; height: 70vw; top: 42%; }
+  .arbots-double-x span { font-size: 58vw; -webkit-text-stroke-width: 2px; }
+  .arbots-xx-robot { top: 42%; transform: translate(-50%,-50%) scale(.72); }
+  .arbots-xx-copy { bottom: 38px; }
+  .arbots-simple-scroll { display: none; }
+  .arbots-roll-card > div:last-child, .arbots-specs .arbots-shell, .arbots-survey-layout { grid-template-columns: 1fr; }
+  .arbots-roll-card > div:last-child { gap: 22px; }
+  .arbots-specs .arbots-shell, .arbots-survey-layout { gap: 60px; }
+  .arbots-specs-heading, .arbots-survey-intro { position: static; }
+}
+
+@media (max-width: 600px) {
+  .arbots-xx-hero { min-height: 900px; }
+  .arbots-double-x { top: 38%; }
+  .arbots-double-x span { font-size: 64vw; }
+  .arbots-double-x span:first-child { left: 26%; }.arbots-double-x span:last-child { left: 74%; }
+  .arbots-xx-robot { top: 39%; transform: translate(-50%,-50%) scale(.59); }
+  .arbots-xx-copy { left: 22px; bottom: 38px; width: calc(100% - 44px); }
+  .arbots-xx-copy .arbots-actions { align-items: flex-start; flex-direction: column; }
+  .arbots-roll-section, .arbots-specs, .arbots-survey-section { padding-block: 105px; }
+  .arbots-roll-deck { width: calc(100% - 30px); }
+  .arbots-roll-card { top: 88px; min-height: 610px; padding: 27px 23px 30px; border-radius: 20px; }
+  .arbots-roll-card:nth-child(2) { top: 94px; }.arbots-roll-card:nth-child(3) { top: 100px; }.arbots-roll-card:nth-child(4) { top: 106px; }
+  .arbots-roll-card h3 { font-size: 38px; }
+  .arbots-spec-list div { grid-template-columns: 1fr; gap: 9px; align-content: center; }
+  .arbots-survey-card { padding: 26px 18px; border-radius: 18px; }
+  .arbots-options { grid-template-columns: 1fr; }
+  .arbots-survey-actions { justify-content: stretch; }
+  .arbots-survey-actions button { flex: 1; }
+}
+
 @media (max-width: 1050px) {
   .arbots-shell { width: min(100% - 48px, 1240px); }
   .arbots-nav-links { gap: 20px; }

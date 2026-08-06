@@ -14,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.includes("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
   return {
+    metadataBase: new URL(origin),
     title: { default: "ARIX — Physical AI for Precision Agriculture", template: "%s | ARIX" },
     description: "ARIX is building an AI-powered crop intelligence system for disease detection, field mapping, and precision agriculture.",
     openGraph: {
