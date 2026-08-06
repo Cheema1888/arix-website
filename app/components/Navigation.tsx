@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BrandLogo } from "./BrandLogo";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Navigation() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  if (pathname.startsWith("/arbots")) return null;
   return (
     <header className="site-header">
       <div className="nav-shell">
@@ -19,6 +22,7 @@ export function Navigation() {
         <nav className={open ? "nav-links is-open" : "nav-links"} aria-label="Primary navigation">
           <Link href="/" onClick={() => setOpen(false)}>Home</Link>
           <Link href="/technology" onClick={() => setOpen(false)}>Technology</Link>
+          <Link href="/arbots" onClick={() => setOpen(false)}>Arbots</Link>
           <Link href="/roadmap" onClick={() => setOpen(false)}>Roadmap</Link>
           <Link href="/about" onClick={() => setOpen(false)}>About</Link>
           <ThemeToggle />

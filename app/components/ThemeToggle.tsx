@@ -8,7 +8,8 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
-    setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
+    const frame = window.requestAnimationFrame(() => setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark"));
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   function toggleTheme() {

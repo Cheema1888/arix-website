@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 
 const contactEmail = "arix.solutions.pk@gmail.com";
 
-export function ContactForm() {
+export function ContactForm({ initialEmail = "", initialInterest = "Pilot partnership" }: { initialEmail?: string; initialInterest?: string }) {
   const [draftUrl, setDraftUrl] = useState<string | null>(null);
 
   function submit(event: FormEvent<HTMLFormElement>) {
@@ -26,8 +26,8 @@ export function ContactForm() {
   return (
     <form className="contact-form" onSubmit={submit}>
       <div className="field-row"><label>First name<input name="firstName" required placeholder="Your first name" /></label><label>Last name<input name="lastName" required placeholder="Your last name" /></label></div>
-      <label>Email address<input type="email" name="email" required placeholder="name@company.com" /></label>
-      <label>I&apos;m interested in<select name="interest" defaultValue="Pilot partnership"><option>Pilot partnership</option><option>Investment</option><option>Research collaboration</option><option>Joining the team</option><option>General inquiry</option></select></label>
+      <label>Email address<input type="email" name="email" required defaultValue={initialEmail} placeholder="name@company.com" /></label>
+      <label>I&apos;m interested in<select name="interest" defaultValue={initialInterest}><option>Pilot partnership</option><option>Arbots X early access</option><option>Investment</option><option>Research collaboration</option><option>Joining the team</option><option>General inquiry</option></select></label>
       <label>Tell us about your interest<textarea name="message" required rows={5} placeholder="How would you like to work with ARIX?" /></label>
       <button className="button button-primary" type="submit">Contact the team <span>↗</span></button>
       <p className="form-note">This opens a complete email draft addressed to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. Press Send in your email app to deliver it.</p>
