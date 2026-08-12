@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 
-const contactEmail = "arix.solutions.pk@gmail.com";
+const contactEmail = "team@arix.pk";
 
 export function ContactForm({ initialEmail = "", initialInterest = "Pilot partnership" }: { initialEmail?: string; initialInterest?: string }) {
   const [draftUrl, setDraftUrl] = useState<string | null>(null);
