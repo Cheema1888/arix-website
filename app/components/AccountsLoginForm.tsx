@@ -33,7 +33,7 @@ export function AccountsLoginForm({ returnTo }: { returnTo: string }) {
       </label>
       <label>
         Password
-        <input name="password" type="password" autoComplete="current-password" minLength={12} required placeholder="Your password" />
+        <input name="password" type="password" autoComplete="current-password" minLength={10} required placeholder="Your password" />
       </label>
       {error && <p className="accounts-form-error" role="alert">{error}</p>}
       <button className="accounts-primary-button" type="submit" disabled={pending}>

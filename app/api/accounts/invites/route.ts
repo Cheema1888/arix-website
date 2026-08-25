@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getEmployeeForRequest, logAudit } from "@/app/lib/accounts-auth";
+import { getEmployeeForRequest, logAudit, PRINCIPAL_ADMIN_EMAIL } from "@/app/lib/accounts-auth";
 import { accountsPool, ensureAccountsSchema, normalizeEmail, sha256Hex } from "@/app/lib/accounts-db";
 import { isSameOrigin } from "@/app/lib/accounts-security";
 
@@ -9,7 +9,7 @@ const roles = ["admin", "accountant", "viewer"] as const;
 export async function POST(request: Request) {
   if (!isSameOrigin(request)) return NextResponse.json({ error: "Invalid request origin." }, { status: 403 });
   const employee = await getEmployeeForRequest(request);
-  if (!employee || employee.role !== "admin") return NextResponse.json({ error: "Administrator access is required." }, { status: 403 });
+  if (!employee || employee.email !== PRINCIPAL_ADMIN_EMAIL) return NextResponse.json({ error: "Principal administrator access is required." }, { status: 403 });
   const body = await request.json().catch(() => null);
   const email = normalizeEmail(String(body?.email || ""));
   const role = String(body?.role || "viewer") as typeof roles[number];

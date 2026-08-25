@@ -39,8 +39,8 @@ export function AccountsSetupForm() {
     <label>Administrator email<input value="team@arix.pk" readOnly aria-readonly="true" /></label>
     <label>Your name<input name="name" required minLength={2} maxLength={80} autoComplete="name" placeholder="Full name" /></label>
     <label>One-time setup code<input name="setupCode" type="password" required autoComplete="one-time-code" placeholder="Setup code" /></label>
-    <label>Create password<input name="password" type="password" required minLength={12} maxLength={128} autoComplete="new-password" placeholder="At least 12 characters" /></label>
-    <label>Confirm password<input name="confirmPassword" type="password" required minLength={12} maxLength={128} autoComplete="new-password" placeholder="Repeat password" /></label>
+    <label>Create password<input name="password" type="password" required minLength={10} maxLength={128} autoComplete="new-password" placeholder="At least 10 characters" /></label>
+    <label>Confirm password<input name="confirmPassword" type="password" required minLength={10} maxLength={128} autoComplete="new-password" placeholder="Repeat password" /></label>
     {error && <p className="accounts-form-error" role="alert">{error}</p>}
     <button className="accounts-primary-button" type="submit" disabled={pending}>{pending ? "Creating administrator…" : "Activate accounts"}<span>↗</span></button>
   </form>;

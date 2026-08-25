@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth, logAudit } from "@/app/lib/accounts-auth";
+import { auth, logAudit, PRINCIPAL_ADMIN_EMAIL } from "@/app/lib/accounts-auth";
 import {
   accountsPool,
   ensureAccountsSchema,
@@ -21,15 +21,15 @@ export async function POST(request: Request) {
   if (!configuredCode || !setupCode || (await sha256Hex(setupCode)) !== (await sha256Hex(configuredCode))) {
     return NextResponse.json({ error: "The setup code is not valid." }, { status: 403 });
   }
-  if (name.length < 2 || password.length < 12 || password.length > 128) {
-    return NextResponse.json({ error: "Enter your name and a password of at least 12 characters." }, { status: 422 });
+  if (name.length < 2 || password.length < 10 || password.length > 128) {
+    return NextResponse.json({ error: "Enter your name and a password of at least 10 characters." }, { status: 422 });
   }
 
   await ensureAccountsSchema();
   const existing = await accountsPool.query("SELECT 1 FROM arix_employees LIMIT 1");
   if (existing.rowCount) return NextResponse.json({ error: "ARIX Accounts has already been activated." }, { status: 409 });
 
-  const email = normalizeEmail("iqbalabdurehman484@gmail.com");
+  const email = normalizeEmail(PRINCIPAL_ADMIN_EMAIL);
   const inviteId = crypto.randomUUID();
   const tokenHash = await sha256Hex(setupCode);
   await accountsPool.query(

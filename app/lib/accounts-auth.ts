@@ -12,6 +12,8 @@ import {
   type EmployeeRole,
 } from "./accounts-db";
 
+export const PRINCIPAL_ADMIN_EMAIL = "iqbalabdurehman484@gmail.com";
+
 const authBaseUrl =
   process.env.BETTER_AUTH_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -31,7 +33,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     autoSignIn: false,
-    minPasswordLength: 12,
+    minPasswordLength: 10,
     maxPasswordLength: 128,
     revokeSessionsOnPasswordReset: true,
   },
