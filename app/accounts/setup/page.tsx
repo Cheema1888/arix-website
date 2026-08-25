@@ -1,9 +1,15 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { AccountsSetupForm } from "@/app/components/AccountsSetupForm";
+import { accountsPool, ensureAccountsSchema } from "@/app/lib/accounts-db";
 
 export const dynamic = "force-dynamic";
 
-export default function AccountsSetupPage() {
+export default async function AccountsSetupPage() {
+  await ensureAccountsSchema();
+  const existing = await accountsPool.query("SELECT 1 FROM arix_employees LIMIT 1");
+  if (existing.rowCount) redirect("/accounts/login");
+
   return (
     <main className="accounts-auth-page accounts-setup-page">
       <section className="accounts-auth-brand">

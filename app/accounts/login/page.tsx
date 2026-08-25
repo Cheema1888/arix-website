@@ -35,7 +35,7 @@ export default async function AccountsLoginPage({
           <span className="accounts-lock" aria-hidden="true">●</span>
           <p className="accounts-kicker">ARIX Accounts</p>
           <h2>Sign in</h2>
-          <p>Use the email and password attached to your employee invitation.</p>
+          <p>Use your approved ARIX employee email and password.</p>
           <AccountsLoginForm returnTo={safeReturnTo} />
           <div className="accounts-security-note">
             <strong>Protected workspace</strong>
