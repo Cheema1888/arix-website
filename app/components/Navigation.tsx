@@ -9,7 +9,7 @@ import { ThemeToggle } from "./ThemeToggle";
 export function Navigation() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  if (pathname.startsWith("/arbots")) return null;
+  if (pathname.startsWith("/arbots") || pathname.startsWith("/accounts")) return null;
   return (
     <header className="site-header">
       <div className="nav-shell">
