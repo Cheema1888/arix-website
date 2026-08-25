@@ -29,7 +29,7 @@ export async function POST(request: Request) {
   const existing = await accountsPool.query("SELECT 1 FROM arix_employees LIMIT 1");
   if (existing.rowCount) return NextResponse.json({ error: "ARIX Accounts has already been activated." }, { status: 409 });
 
-  const email = normalizeEmail("team@arix.pk");
+  const email = normalizeEmail("iqbalabdurehman484@gmail.com");
   const inviteId = crypto.randomUUID();
   const tokenHash = await sha256Hex(setupCode);
   await accountsPool.query(
