@@ -19,6 +19,11 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(origin),
     title: { default: "ARIX — Physical AI for Precision Agriculture", template: "%s | ARIX" },
     description: "ARIX is building an AI-powered crop intelligence system for disease detection, field mapping, and precision agriculture.",
+    icons: {
+      icon: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
+      shortcut: "/icon.png",
+      apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+    },
     openGraph: {
       title: "ARIX — See disease sooner. Treat only what matters.",
       description: "Physical AI for precision agriculture.",
