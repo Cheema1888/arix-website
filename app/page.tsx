@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FieldScanner } from "./components/FieldScanner";
+import { PublicFinancePulse } from "./components/PublicFinancePulse";
+import { getPublicFinanceTotals } from "./lib/accounts-db";
 
 const pipeline = [
   { number: "01", visual: "survey", title: "Survey", text: "A manually piloted drone captures high-resolution crop imagery across the field." },
@@ -9,7 +11,10 @@ const pipeline = [
   { number: "04", visual: "act", title: "Act", text: "The grower receives a clear report that turns crop signals into focused field decisions." },
 ];
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const financeTotals = await getPublicFinanceTotals();
   return (
     <main>
       <section className="hero hero-home">
@@ -43,9 +48,11 @@ export default function Home() {
         </div>
       </section>
 
+      <PublicFinancePulse revenue={financeTotals.revenue} investment={financeTotals.investment} />
+
       <section className="section shell">
         <div className="section-heading">
-          <div><p className="section-index">02 / System</p><h2>From crop to coordinates</h2></div>
+          <div><p className="section-index">03 / System</p><h2>From crop to coordinates</h2></div>
           <p>A practical first MVP that proves the intelligence pipeline before adding flight autonomy.</p>
         </div>
         <div className="pipeline-grid">
@@ -61,7 +68,7 @@ export default function Home() {
       <section className="scanner-section section">
         <div className="shell scanner-layout">
           <div className="scanner-intro">
-            <p className="section-index">03 / Intelligence layer</p>
+            <p className="section-index">04 / Intelligence layer</p>
             <h2>Signals you can act on.</h2>
             <p>ARIX is initially focused on four wheat conditions. Explore the interface concept to see how field imagery becomes a readable disease map.</p>
             <Link className="text-link" href="/technology">Inside the technology <span>→</span></Link>
@@ -72,7 +79,7 @@ export default function Home() {
 
       <section className="section shell impact-section">
         <div className="section-heading">
-          <div><p className="section-index">04 / Intended impact</p><h2>Precision with a purpose</h2></div>
+          <div><p className="section-index">05 / Intended impact</p><h2>Precision with a purpose</h2></div>
           <p>These figures are product targets from the current implementation plan. Field validation is still ahead.</p>
         </div>
         <div className="impact-grid">
@@ -85,7 +92,7 @@ export default function Home() {
 
       <section className="vision-band">
         <div className="vision-media"><Image src="/arix-drone-concept.png" alt="ARIX concept drone scanning a wheat field at golden hour" fill sizes="(max-width: 980px) 100vw, 54vw" /></div>
-        <div className="vision-copy"><p className="section-index">05 / The path forward</p><h2>Prove the intelligence.<br />Then automate the response.</h2><p>MVP-A validates manual survey, post-flight detection, geo-referencing, heat maps, and reporting. MVP-B introduces waypoint autonomy and onboard processing.</p><Link className="button button-primary" href="/roadmap">View the roadmap <span>→</span></Link></div>
+        <div className="vision-copy"><p className="section-index">06 / The path forward</p><h2>Prove the intelligence.<br />Then automate the response.</h2><p>MVP-A validates manual survey, post-flight detection, geo-referencing, heat maps, and reporting. MVP-B introduces waypoint autonomy and onboard processing.</p><Link className="button button-primary" href="/roadmap">View the roadmap <span>→</span></Link></div>
       </section>
 
       <section className="cta-section shell">

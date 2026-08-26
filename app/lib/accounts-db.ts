@@ -350,3 +350,18 @@ export async function getFinanceSnapshot(): Promise<FinanceSnapshot> {
     })),
   };
 }
+
+export async function getPublicFinanceTotals() {
+  await ensureAccountsSchema();
+  const result = await accountsPool.query(`
+    SELECT
+      COALESCE(SUM(CASE WHEN kind = 'revenue' AND status = 'posted' THEN amount_paisa ELSE 0 END), 0) AS revenue,
+      COALESCE(SUM(CASE WHEN kind = 'investment' AND status = 'posted' THEN amount_paisa ELSE 0 END), 0) AS investment
+    FROM arix_journal_entries
+  `);
+  const row = result.rows[0] ?? {};
+  return {
+    revenue: Number(row.revenue || 0) / 100,
+    investment: Number(row.investment || 0) / 100,
+  };
+}
