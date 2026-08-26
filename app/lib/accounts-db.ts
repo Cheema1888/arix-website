@@ -247,7 +247,7 @@ export async function getFinanceSnapshot(): Promise<FinanceSnapshot> {
         FROM arix_journal_lines l
         JOIN arix_finance_accounts a ON a.id = l.account_id
         JOIN arix_journal_entries e ON e.id = l.journal_entry_id
-        WHERE e.status = 'posted'
+        WHERE e.status IN ('posted', 'reversed')
       `),
       accountsPool.query(`
         SELECT a.id, a.code, a.name, a.type, a.subtype,
@@ -257,7 +257,7 @@ export async function getFinanceSnapshot(): Promise<FinanceSnapshot> {
             ELSE l.credit_paisa - l.debit_paisa END), 0) AS balance
         FROM arix_finance_accounts a
         LEFT JOIN arix_journal_lines l ON l.account_id = a.id
-        LEFT JOIN arix_journal_entries e ON e.id = l.journal_entry_id AND e.status = 'posted'
+        LEFT JOIN arix_journal_entries e ON e.id = l.journal_entry_id AND e.status IN ('posted', 'reversed')
         WHERE a.active = TRUE
         GROUP BY a.id ORDER BY a.code
       `),

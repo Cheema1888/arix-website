@@ -16,7 +16,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     await withAccountsTransaction(async (client) => {
       const entryResult = await client.query("SELECT * FROM arix_journal_entries WHERE id = $1 FOR UPDATE", [id]);
       const entry = entryResult.rows[0];
-      if (!entry || entry.status !== "posted") throw new Error("not_reversible");
+      if (!entry || entry.status !== "posted" || entry.kind === "reversal") throw new Error("not_reversible");
       const lines = await client.query("SELECT * FROM arix_journal_lines WHERE journal_entry_id = $1", [id]);
       await client.query(
         `INSERT INTO arix_journal_entries
