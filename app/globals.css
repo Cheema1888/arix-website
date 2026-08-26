@@ -93,6 +93,9 @@ html[data-theme="dark"] .brand-logo { background: #f5f7f1; box-shadow: inset 0 0
 .nav-links { display: flex; align-items: center; gap: 27px; font-family: var(--font-geist-mono), monospace; text-transform: uppercase; letter-spacing: .11em; font-size: 11px; }
 .nav-links > a { color: var(--nav-text); transition: color .25s ease; }
 .nav-links > a:hover { color: var(--lime); }
+.nav-links .nav-login { display: inline-flex; align-items: center; gap: 8px; padding: 9px 11px; border: 1px solid var(--line); color: var(--nav-text); white-space: nowrap; transition: color .25s ease, border-color .25s ease, background .25s ease; }
+.nav-links .nav-login span { color: var(--lime); font-size: 7px; text-shadow: 0 0 8px var(--lime); }
+.nav-links .nav-login:hover { color: var(--lime); border-color: var(--lime); background: color-mix(in srgb, var(--lime) 6%, transparent); }
 .nav-links .nav-cta { display: flex; align-items: center; gap: 34px; padding: 13px 15px 13px 18px; color: var(--on-lime); background: var(--lime); }
 .nav-links .nav-cta:hover { color: var(--on-lime); background: var(--lime-bright); }
 .theme-toggle { min-width: 78px; height: 36px; padding: 0 11px; border: 1px solid var(--line); background: transparent; color: var(--nav-text); display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: color .25s ease, border-color .25s ease, background .25s ease; }
@@ -426,6 +429,7 @@ html[data-theme="dark"] .brand-logo { background: #f5f7f1; box-shadow: inset 0 0
   .nav-links { position: absolute; top: 68px; left: 0; right: 0; padding: 30px 20px 34px; display: none; flex-direction: column; align-items: stretch; gap: 0; background: var(--header-solid); border-bottom: 1px solid var(--lime); }
   .nav-links.is-open { display: flex; }
   .nav-links > a { padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .nav-links .nav-login { padding: 18px 0; border-width: 0 0 1px; }
   .theme-toggle { width: 100%; height: 48px; margin-top: 15px; justify-content: flex-start; padding-inline: 0; border-width: 0 0 1px; }
   .nav-links .nav-cta { margin-top: 18px; padding-inline: 16px; border: 0; }
   .hero { min-height: 900px; padding-top: 68px; }

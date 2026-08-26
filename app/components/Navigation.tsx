@@ -25,6 +25,7 @@ export function Navigation() {
           <Link href="/arbots" onClick={() => setOpen(false)}>Arbots</Link>
           <Link href="/roadmap" onClick={() => setOpen(false)}>Roadmap</Link>
           <Link href="/about" onClick={() => setOpen(false)}>About</Link>
+          <Link className="nav-login" href="/accounts/login" onClick={() => setOpen(false)}><span aria-hidden="true">●</span> Accounts login</Link>
           <ThemeToggle />
           <Link className="nav-cta" href="/contact" onClick={() => setOpen(false)}>Contact <span>↗</span></Link>
         </nav>
