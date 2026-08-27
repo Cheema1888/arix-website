@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { SolutionsFooter, SolutionsNavigation } from "../components/SolutionsChrome";
 import "./solutions.css";
 
 const title = "Web Development & SEO Services";
-const description = "ARIX builds modern websites and end-to-end technology solutions that help small and medium businesses scale.";
+const description = "ARIX Solutions builds modern websites and end-to-end technology solutions that help small and medium businesses scale.";
 
 export const metadata: Metadata = {
   title,
   description,
-  openGraph: { title: `${title} | ARIX`, description, images: [] },
-  twitter: { title: `${title} | ARIX`, description, images: [] },
+  openGraph: { title: `${title} | ARIX Solutions`, description, images: [{ url: "/arix-solutions-og.png", width: 1731, height: 909, alt: "ARIX Solutions — web development and SEO for growing businesses" }] },
+  twitter: { card: "summary_large_image", title: `${title} | ARIX Solutions`, description, images: ["/arix-solutions-og.png"] },
 };
 
 export default function SolutionsLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return <div className="solutions-site"><SolutionsNavigation />{children}<SolutionsFooter /></div>;
 }

@@ -42,16 +42,16 @@ export function SolutionsLanding() {
         <div className="solutions-grid" aria-hidden="true" />
         <div className="solutions-shell solutions-hero-layout">
           <div className="solutions-hero-copy">
-            <p className="solutions-label"><span /> Digital services by ARIX · Islamabad</p>
+            <p className="solutions-label"><span /> ARIX Solutions · Islamabad</p>
             <h1>Building modern websites and <em>end-to-end tech solutions.</em></h1>
             <p className="solutions-lead">Helping small and medium businesses build a stronger digital presence, reach the right customers, and scale with confidence.</p>
             <div className="solutions-actions">
-              <a className="solutions-button primary" href="mailto:solutions@arix.pk?subject=Digital%20services%20project%20inquiry">Start a project <span>↗</span></a>
+              <a className="solutions-button primary" href="mailto:solutions@arix.pk?subject=Project%20inquiry%20for%20ARIX%20Solutions">Start a project <span>↗</span></a>
               <a className="solutions-button secondary" href="#services">Explore services <span>↓</span></a>
             </div>
           </div>
 
-          <div className="solutions-index" aria-label="ARIX digital services overview">
+          <div className="solutions-index" aria-label="ARIX Solutions service overview">
             <div className="solutions-index-top"><span>Service index</span><b>02 capabilities</b></div>
             <Link href="#seo-audit"><span>01</span><div><small>Diagnose</small><strong>SEO audit</strong></div><i>↗</i></Link>
             <Link href="#website-development"><span>02</span><div><small>Create</small><strong>Website development</strong></div><i>↗</i></Link>
@@ -83,7 +83,7 @@ export function SolutionsLanding() {
         </div>
       </section>
 
-      <section className="solutions-process solutions-shell">
+      <section className="solutions-process solutions-shell" id="process">
         <div className="solutions-heading"><div><p className="solutions-section-number">03 / How we work</p><h2>Clear from day one.</h2></div><p>A simple, collaborative process that keeps decisions visible and momentum steady.</p></div>
         <div className="solutions-process-grid">
           {process.map(([number, title, text]) => <article key={number}><span>{number}</span><div className="solutions-process-mark"><i /></div><h3>{title}</h3><p>{text}</p></article>)}

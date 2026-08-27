@@ -6,7 +6,7 @@ import { BrandLogo } from "./BrandLogo";
 
 export function Footer() {
   const pathname = usePathname();
-  if (pathname.startsWith("/arbots") || pathname.startsWith("/accounts")) return null;
+  if (pathname.startsWith("/arbots") || pathname.startsWith("/solutions") || pathname.startsWith("/accounts")) return null;
   return (
     <footer className="site-footer">
       <div className="shell footer-main">
