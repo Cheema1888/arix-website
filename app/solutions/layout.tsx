@@ -8,7 +8,7 @@ const description = "ARIX Solutions builds modern websites and end-to-end techno
 export const metadata: Metadata = {
   title: { absolute: `${title} | ARIX Solutions` },
   description,
-  openGraph: { title: `${title} | ARIX Solutions`, description, images: [{ url: "/arix-solutions-og.png", width: 1731, height: 909, alt: "ARIX Solutions — web development and SEO for growing businesses" }] },
+  openGraph: { title: `${title} | ARIX Solutions`, description, images: [{ url: "/arix-solutions-og.png", width: 1672, height: 941, alt: "ARIX Solutions — web development and SEO for growing businesses" }] },
   twitter: { card: "summary_large_image", title: `${title} | ARIX Solutions`, description, images: ["/arix-solutions-og.png"] },
 };
 

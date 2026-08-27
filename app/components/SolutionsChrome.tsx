@@ -1,12 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 function SolutionsWordmark({ large = false }: { large?: boolean }) {
+  if (large) {
+    return <span className="solutions-wordmark-full" aria-hidden="true"><Image src="/arix-solutions-logo.jpeg" alt="" width={1050} height={1250} /></span>;
+  }
   return (
-    <span className={large ? "solutions-wordmark is-large" : "solutions-wordmark"} aria-hidden="true">
-      <span className="solutions-wordmark-mark">S<span>/</span></span>
+    <span className="solutions-wordmark" aria-hidden="true">
+      <span className="solutions-wordmark-mark"><Image src="/arix-solutions-logo.jpeg" alt="" width={1050} height={1250} /></span>
       <span className="solutions-wordmark-name"><strong>ARIX</strong><b>SOLUTIONS</b></span>
     </span>
   );
