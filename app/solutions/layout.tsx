@@ -7,6 +7,11 @@ const description = "Transforming legacy sites into next-gen platforms and AI - 
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
+  icons: {
+    icon: [{ url: "/axolutions-logo-mark.png", type: "image/png" }],
+    shortcut: "/axolutions-logo-mark.png",
+    apple: [{ url: "/axolutions-logo-mark.png", type: "image/png" }],
+  },
   openGraph: {
     title,
     description,
