@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axolutions // High-Performance Digital Engineering & Revenue Platforms</title>
+  <meta name="description" content="Axolutions (an Arix Company) builds high-converting web applications, bespoke digital platforms, and forensic SEO architectures engineered for revenue growth.">
+  
+  <!-- Fonts: Geist (Headings/Display/Body) & Geist Mono (Tech/Brand/Buttons/Eyebrows) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700;800&family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN for rapid responsive layout -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#07152B',
+              navyDeep: '#040C1A',
+              navyCard: '#0D203D',
+              navyBorder: '#1A365D',
+              blue: '#0062FF',
+              blueHover: '#0052D4',
+              blueGlow: '#1D72FE',
+              ice: '#F1F6FB',
+              iceAlt: '#E8F1F8',
+              slateText: '#4A5568',
+              slateLight: '#718096'
+            }
+          },
+          fontFamily: {
+            heading: ['"Geist"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+            display: ['"Geist"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+            body: ['"Geist"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+            tech: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+            mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Exact Typography and Brand Aesthetics (Inherited from Arix Design System) */
+    body {
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #07152B;
+      background-color: #FFFFFF;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+      font-weight: 820;
+    }
+
+    .font-tech {
+      font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      letter-spacing: 0.1em;
+    }
+
+    /* Hard-Cornered Enterprise Button System (Coherent with Arix design language) */
+    .btn-arix {
+      min-height: 52px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 36px;
+      border-radius: 0 !important;
+      font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+    .btn-arix:hover {
+      transform: translateY(-2px);
+    }
+    .btn-arix-primary {
+      background-color: #07152B;
+      color: #FFFFFF;
+      border: 1px solid #07152B;
+    }
+    .btn-arix-primary:hover {
+      background-color: #0062FF;
+      border-color: #0062FF;
+      color: #FFFFFF;
+    }
+    .btn-arix-secondary {
+      background-color: rgba(255, 255, 255, 0.7);
+      color: #07152B;
+      border: 1px solid rgba(18, 103, 194, 0.22);
+    }
+    .btn-arix-secondary:hover {
+      background-color: #FFFFFF;
+      border-color: #0062FF;
+      color: #0062FF;
+    }
+
+    /* Grid & Geometric Background Accents */
+    .bg-grid-subtle {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(7, 21, 43, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(7, 21, 43, 0.035) 1px, transparent 1px);
+    }
+
+    .bg-grid-dark {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+
+    /* Architectural Concentric Arcs */
+    .hero-arc {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0, 98, 255, 0.08);
+      pointer-events: none;
+    }
+
+    /* Glowing Pulsing Status Indicator */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.15); }
+    }
+    .status-pulse {
+      animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Custom Hairline borders */
+    .border-hairline {
+      border-color: #E2E8F0;
+    }
+
+    /* Main navigation link styling ensuring Arix matches other links and turns green on hover */
+    nav a {
+      color: #475569 !important;
+    }
+    nav a:hover {
+      color: #0062FF !important;
+    }
+    nav a[href*="arix.pk"]:hover {
+      color: #10B981 !important;
+    }
+
+    /* 3D Bookshelf Library of Windows */
+    .shelf-stage {
+      perspective: 1200px;
+      perspective-origin: 40% 50%;
+    }
+    .shelf-track {
+      display: flex;
+      gap: 22px;
+      padding: 34px 30px 42px 30px;
+      overflow-x: auto;
+      overflow-y: visible;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      transform-style: preserve-3d;
+      cursor: grab;
+      user-select: none;
+    }
+    .shelf-track:active {
+      cursor: grabbing;
+    }
+    .shelf-track::-webkit-scrollbar {
+      display: none;
+    }
+    .shelf-window {
+      flex: 0 0 320px;
+      width: 320px;
+      height: 215px;
+      border: 1.5px solid #07152B;
+      background-color: #07152B;
+      border-radius: 0px;
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      transform: perspective(1000px) rotateY(-18deg) rotateX(3deg);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.25s ease;
+      box-shadow: -10px 14px 24px -6px rgba(7, 21, 43, 0.22), 0 4px 10px rgba(0, 0, 0, 0.06);
+      position: relative;
+      user-select: none;
+      cursor: pointer;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      will-change: transform;
+    }
+    .shelf-window:hover {
+      transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateZ(48px) translateY(-12px) scale(1.08);
+      z-index: 50;
+      border-color: #0062FF;
+      box-shadow: 0 26px 52px -10px rgba(0, 98, 255, 0.35), 0 14px 28px -6px rgba(7, 21, 43, 0.28);
+    }
+  </style>
+</head>
+<body class="selection:bg-brand-blue selection:text-white antialiased">
+
+  <!-- ================= TOP NOTICE BANNER (Dark Navy #07152B) ================= -->
+  <div class="bg-brand-navy text-white text-xs font-tech py-2.5 px-4 text-center border-b border-brand-navyBorder">
+    <a href="#audit-section" onclick="prefillAudit()" class="inline-flex items-center justify-center gap-2 text-white font-bold tracking-wider uppercase hover:text-brand-blue transition-colors">
+      <span>CLAIM 48-HOUR AUDIT</span>
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+
+  <!-- ================= STICKY MAIN NAVIGATION ================= -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo: Official Cropped Arix Solutions Logo + AXOLUTIONS (Moved further left) -->
+      <a href="#" class="flex items-center gap-3 group flex-shrink-0 mr-4 xl:mr-8">
+        <img src="axolutions-logo-mark.png" alt="Axolutions Logo" class="h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105" />
+        <span class="font-heading font-bold text-xl sm:text-2xl tracking-tight text-brand-navy">AXOLUTIONS</span>
+      </a>
+
+      <!-- Navigation Links (One line, no numbers, clean layout) -->
+      <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 font-tech text-xs tracking-wider uppercase text-slate-600 whitespace-nowrap">
+        <a href="#services" class="hover:text-brand-blue transition-colors">Services</a>
+        <a href="#process" class="hover:text-brand-blue transition-colors">Process</a>
+        <a href="#calculator" class="hover:text-brand-blue transition-colors">Scope Estimator</a>
+        <a href="#why-us" class="hover:text-brand-blue transition-colors">Why Us?</a>
+        <a href="https://arix.pk" target="_blank" class="hover:text-emerald-500 transition-colors" title="Visit Arix">Arix</a>
+      </nav>
+
+      <!-- Primary Action CTA -->
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <a href="#audit-section" onclick="prefillAudit()" class="hidden sm:inline-flex btn-arix btn-arix-primary min-h-[44px] px-5 py-2.5 text-[11px] gap-6 group">
+          <span>START A PROJECT</span>
+          <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+        </a>
+        <a href="#calculator" class="inline-flex sm:hidden btn-arix btn-arix-primary min-h-[38px] px-3 py-2 text-[10px]">
+          ESTIMATE
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative bg-white pt-6 pb-12 lg:pt-8 lg:pb-16 overflow-hidden bg-grid-subtle border-b border-gray-200">
+    
+    <!-- Background Technical Geometric Rings (Preserving screenshot heritage) -->
+    <div class="hero-arc w-[450px] h-[450px] -right-24 -top-24"></div>
+    <div class="hero-arc w-[700px] h-[700px] -right-48 -top-48 border-blue-500/10"></div>
+    <div class="hero-arc w-[1000px] h-[1000px] -right-72 -top-72 border-blue-500/5"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+        
+        <!-- Left: Compelling Magnetic Conversion Copy -->
+        <div class="lg:col-span-6 pr-0 xl:pr-4">
+          <h1 class="text-4xl sm:text-5xl lg:text-[45px] xl:text-[47px] font-heading font-extrabold uppercase text-brand-navy tracking-tight leading-[1.08] mb-6">
+            TRANSFORMING <br>
+            LEGACY SITES INTO <br>
+            NEXT-GEN PLATFORMS &amp; <br>
+            <span class="text-brand-blue">AI - ENGINEERING</span> <br>
+            <span class="text-brand-blue">SOLUTIONS.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-brand-slateText max-w-xl font-normal leading-relaxed mb-8 font-body">
+            Your digital presence should reflect the true caliber of your business. If your site is slow, outdated, or falling behind competitors, we renovate it to modern standards. What takes others weeks, we build in days by delivering high end, lightning fast platforms with cutting edge AI integrations engineered to command authority and convert.
+          </p>
+
+          <!-- Dual Conversion Buttons (Exact Arix hard-cornered layout from screenshot) -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a href="#audit-section" onclick="prefillAudit()" class="btn-arix btn-arix-primary min-h-[54px] px-6 py-4 gap-10 group">
+              <span>CLAIM FREE 48H AUDIT</span>
+              <span class="group-hover:translate-x-1 transition-transform font-bold text-sm">&rarr;</span>
+            </a>
+            
+            <a href="#services" class="btn-arix btn-arix-secondary min-h-[54px] px-6 py-4 gap-10 group">
+              <span>EXPLORE SERVICES</span>
+              <span class="group-hover:translate-y-0.5 transition-transform font-bold text-sm">&darr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Interactive 3D Bookshelf Window Library -->
+        <div class="lg:col-span-6 relative w-full pt-4 lg:pt-0 overflow-hidden">
+
+          <!-- 3D Bookshelf Stage -->
+          <div class="shelf-stage relative">
+            <!-- Ultra-subtle edge feather (pulled outward to extreme boundary, non-intrusive) -->
+            <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-3 sm:w-4 bg-gradient-to-r from-white to-transparent z-30"></div>
+            <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-3 sm:w-4 bg-gradient-to-l from-white to-transparent z-30"></div>
+
+            <div id="bookshelf-track" class="shelf-track">
+              
+              <!-- Set 1 (Original 5 Builds) -->
+              <!-- Window 01: Arix -->
+              <div class="shelf-window group" onmousedown="cardPointerDown(event)" onclick="handleCardClick('https://arix.pk', event)" title="Arix - arix.pk">
+                <div class="bg-[#07152B] px-3.5 py-2.5 flex items-center justify-between border-b border-slate-700/80">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                  </div>
+                  <span class="font-tech text-[10px] text-slate-300 tracking-wider font-semibold">arix.pk</span>
+                  <a href="https://arix.pk" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="font-tech text-[10px] text-emerald-400 font-bold hover:underline" title="Open arix.pk in new tab">LIVE &nearr;</a>
+                </div>
+                <div class="relative h-[178px] bg-slate-900 overflow-hidden">
+                  <img src="anim-arix.webp" alt="Arix Platform" class="w-full h-full object-cover object-top pointer-events-none block" loading="eager" />
+                </div>
+              </div>
+
+              <!-- Window 02: Kazzola -->
+              <div class="shelf-window group" onmousedown="cardPointerDown(event)" onclick="handleCardClick('https://kazzola-web.vercel.app/', event)" title="Kazzola - kazzola-web.vercel.app">
+                <div class="bg-[#07152B] px-3.5 py-2.5 flex items-center justify-between border-b border-slate-700/80">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                  </div>
+                  <span class="font-tech text-[10px] text-slate-300 tracking-wider font-semibold">kazzola-web.vercel.app</span>
+                  <a href="https://kazzola-web.vercel.app/" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="font-tech text-[10px] text-sky-400 font-bold hover:underline" title="Open kazzola-web in new tab">LIVE &nearr;</a>
+                </div>
+                <div class="relative h-[178px] bg-slate-900 overflow-hidden">
+                  <img src="anim-kazzola.webp" alt="Kazzola" class="w-full h-full object-cover object-top pointer-events-none block" loading="eager" />
+                </div>
+              </div>
+
+              <!-- Window 03: AccountGene -->
+              <div class="shelf-window group" onmousedown="cardPointerDown(event)" onclick="handleCardClick('https://accountgene.vercel.app/', event)" title="AccountGene - accountgene.vercel.app">
+                <div class="bg-[#07152B] px-3.5 py-2.5 flex items-center justify-between border-b border-slate-700/80">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                  </div>
+                  <span class="font-tech text-[10px] text-slate-300 tracking-wider font-semibold">accountgene.vercel.app</span>
+                  <a href="https://accountgene.vercel.app/" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="font-tech text-[10px] text-emerald-400 font-bold hover:underline" title="Open accountgene in new tab">LIVE &nearr;</a>
+                </div>
+                <div class="relative h-[178px] bg-slate-100 overflow-hidden">
+                  <img src="anim-accountgene.png" alt="AccountGene" class="w-full h-full object-cover object-top pointer-events-none block" loading="eager" />
+                </div>
+              </div>
+
+              <!-- Window 04: Arbots X -->
+              <div class="shelf-window group" onmousedown="cardPointerDown(event)" onclick="handleCardClick('https://arix.pk/arbots', event)" title="Arbots X - arix.pk/arbots">
+                <div class="bg-[#07152B] px-3.5 py-2.5 flex items-center justify-between border-b border-slate-700/80">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                  </div>
+                  <span class="font-tech text-[10px] text-slate-300 tracking-wider font-semibold">arix.pk/arbots</span>
+                  <a href="https://arix.pk/arbots" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="font-tech text-[10px] text-white font-bold hover:underline" title="Open arbots in new tab">LIVE &nearr;</a>
+                </div>
+                <div class="relative h-[178px] bg-black overflow-hidden">
+                  <img src="anim-arbots.webp" alt="Arbots X" class="w-full h-full object-cover object-top pointer-events-none block" loading="eager" />
+                </div>
+              </div>
+
+              <!-- Window 05: Techlo -->
+              <div class="shelf-window group" onmousedown="cardPointerDown(event)" onclick="handleCardClick('https://techlo.store', event)" title="Techlo - techlo.store">
+                <div class="bg-[#07152B] px-3.5 py-2.5 flex items-center justify-between border-b border-slate-700/80">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                  </div>
+                  <span class="font-tech text-[10px] text-slate-300 tracking-wider font-semibold">techlo.store</span>
+                  <a href="https://techlo.store" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="font-tech text-[10px] text-amber-400 font-bold hover:underline" title="Open techlo in new tab">LIVE &nearr;</a>
+                </div>
+                <div class="relative h-[178px] bg-black overflow-hidden">
+                  <img src="anim-techlo.png" alt="Techlo" class="w-full h-full object-cover object-top pointer-events-none block" loading="eager" />
+                </div>
+              </div>
+
+              <!-- Set 2 (Seamless Infinite Looping Clones) -->
+              <!-- Window 06: Arix Clone -->
+              <div class="shelf-window group" onmousedown="cardPointerDown(event)" onclick="handleCardClick('https://arix.pk', event)" title="Arix - arix.pk">
+                <div class="bg-[#07152B] px-3.5 py-2.5 flex items-center justify-between border-b border-slate-700/80">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                  </div>
+                  <span class="font-tech text-[10px] text-slate-300 tracking-wider font-semibold">arix.pk</span>
+                  <a href="https://arix.pk" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="font-tech text-[10px] text-emerald-400 font-bold hover:underline" title="Open arix.pk in new tab">LIVE &nearr;</a>
+                </div>
+                <div class="relative h-[178px] bg-slate-900 overflow-hidden">
+                  <img src="anim-arix.webp" alt="Arix Platform" class="w-full h-full object-cover object-top pointer-events-none block" loading="eager" />
+                </div>
+              </div>
+
+              <!-- Window 07: Kazzola Clone -->
+              <div class="shelf-window group" onmousedown="cardPointerDown(event)" onclick="handleCardClick('https://kazzola-web.vercel.app/', event)" title="Kazzola - kazzola-web.vercel.app">
+                <div class="bg-[#07152B] px-3.5 py-2.5 flex items-center justify-between border-b border-slate-700/80">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                  </div>
+                  <span class="font-tech text-[10px] text-slate-300 tracking-wider font-semibold">kazzola-web.vercel.app</span>
+                  <a href="https://kazzola-web.vercel.app/" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="font-tech text-[10px] text-sky-400 font-bold hover:underline" title="Open kazzola-web in new tab">LIVE &nearr;</a>
+                </div>
+                <div class="relative h-[178px] bg-slate-900 overflow-hidden">
+                  <img src="anim-kazzola.webp" alt="Kazzola" class="w-full h-full object-cover object-top pointer-events-none block" loading="eager" />
+                </div>
+              </div>
+
+              <!-- Window 08: AccountGene Clone -->
+              <div class="shelf-window group" onmousedown="cardPointerDown(event)" onclick="handleCardClick('https://accountgene.vercel.app/', event)" title="AccountGene - accountgene.vercel.app">
+                <div class="bg-[#07152B] px-3.5 py-2.5 flex items-center justify-between border-b border-slate-700/80">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                  </div>
+                  <span class="font-tech text-[10px] text-slate-300 tracking-wider font-semibold">accountgene.vercel.app</span>
+                  <a href="https://accountgene.vercel.app/" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="font-tech text-[10px] text-emerald-400 font-bold hover:underline" title="Open accountgene in new tab">LIVE &nearr;</a>
+                </div>
+                <div class="relative h-[178px] bg-slate-100 overflow-hidden">
+                  <img src="anim-accountgene.png" alt="AccountGene" class="w-full h-full object-cover object-top pointer-events-none block" loading="eager" />
+                </div>
+              </div>
+
+              <!-- Window 09: Arbots X Clone -->
+              <div class="shelf-window group" onmousedown="cardPointerDown(event)" onclick="handleCardClick('https://arix.pk/arbots', event)" title="Arbots X - arix.pk/arbots">
+                <div class="bg-[#07152B] px-3.5 py-2.5 flex items-center justify-between border-b border-slate-700/80">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                  </div>
+                  <span class="font-tech text-[10px] text-slate-300 tracking-wider font-semibold">arix.pk/arbots</span>
+                  <a href="https://arix.pk/arbots" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="font-tech text-[10px] text-white font-bold hover:underline" title="Open arbots in new tab">LIVE &nearr;</a>
+                </div>
+                <div class="relative h-[178px] bg-black overflow-hidden">
+                  <img src="anim-arbots.webp" alt="Arbots X" class="w-full h-full object-cover object-top pointer-events-none block" loading="eager" />
+                </div>
+              </div>
+
+              <!-- Window 10: Techlo Clone -->
+              <div class="shelf-window group" onmousedown="cardPointerDown(event)" onclick="handleCardClick('https://techlo.store', event)" title="Techlo - techlo.store">
+                <div class="bg-[#07152B] px-3.5 py-2.5 flex items-center justify-between border-b border-slate-700/80">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                  </div>
+                  <span class="font-tech text-[10px] text-slate-300 tracking-wider font-semibold">techlo.store</span>
+                  <a href="https://techlo.store" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="font-tech text-[10px] text-amber-400 font-bold hover:underline" title="Open techlo in new tab">LIVE &nearr;</a>
+                </div>
+                <div class="relative h-[178px] bg-black overflow-hidden">
+                  <img src="anim-techlo.png" alt="Techlo" class="w-full h-full object-cover object-top pointer-events-none block" loading="eager" />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= PROVEN ACROSS HIGH-STAKES INDUSTRIES ================= -->
+  <section class="border-b border-blue-200/80 bg-gradient-to-b from-blue-50/70 via-white to-white py-8 lg:py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-6">
+        <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-brand-navy tracking-tight uppercase">
+          PROVEN ACROSS HIGH-STAKES INDUSTRIES
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        
+        <!-- Sector 1 -->
+        <div class="p-5 rounded-none bg-white border border-blue-200/90 hover:border-brand-blue shadow-xs hover:shadow-md transition-all duration-200 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-tech text-sm text-brand-blue font-bold tracking-wider">01</span>
+            <span class="text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-sm font-bold">&nearr;</span>
+          </div>
+          <div class="font-heading font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-blue transition-colors uppercase leading-snug">
+            FINTECH &amp; INFRASTRUCTURE
+          </div>
+        </div>
+
+        <!-- Sector 2 -->
+        <div class="p-5 rounded-none bg-white border border-blue-200/90 hover:border-brand-blue shadow-xs hover:shadow-md transition-all duration-200 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-tech text-sm text-brand-blue font-bold tracking-wider">02</span>
+            <span class="text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-sm font-bold">&nearr;</span>
+          </div>
+          <div class="font-heading font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-blue transition-colors uppercase leading-snug">
+            B2B SAAS PLATFORMS
+          </div>
+        </div>
+
+        <!-- Sector 3 -->
+        <div class="p-5 rounded-none bg-white border border-blue-200/90 hover:border-brand-blue shadow-xs hover:shadow-md transition-all duration-200 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-tech text-sm text-brand-blue font-bold tracking-wider">03</span>
+            <span class="text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-sm font-bold">&nearr;</span>
+          </div>
+          <div class="font-heading font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-blue transition-colors uppercase leading-snug">
+            ENTERPRISE LOGISTICS
+          </div>
+        </div>
+
+        <!-- Sector 4 -->
+        <div class="p-5 rounded-none bg-white border border-blue-200/90 hover:border-brand-blue shadow-xs hover:shadow-md transition-all duration-200 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-tech text-sm text-brand-blue font-bold tracking-wider">04</span>
+            <span class="text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-sm font-bold">&nearr;</span>
+          </div>
+          <div class="font-heading font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-blue transition-colors uppercase leading-snug">
+            HEALTHCARE &amp; BIO TECH
+          </div>
+        </div>
+
+        <!-- Sector 5 -->
+        <div class="p-5 rounded-none bg-white border border-blue-200/90 hover:border-brand-blue shadow-xs hover:shadow-md transition-all duration-200 group col-span-2 sm:col-span-1">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-tech text-sm text-brand-blue font-bold tracking-wider">05</span>
+            <span class="text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-sm font-bold">&nearr;</span>
+          </div>
+          <div class="font-heading font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-blue transition-colors uppercase leading-snug">
+            HIGH-TICKET COMMERCE
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 1: SERVICES ================= -->
+  <section id="services" class="py-20 lg:py-28 bg-white text-brand-navy relative overflow-hidden border-b border-gray-200">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="mb-14 pb-8 border-b border-gray-200">
+        <span class="font-tech text-xs tracking-widest uppercase text-brand-blue font-semibold block mb-3">
+          01 // SERVICES
+        </span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold uppercase tracking-tight text-brand-navy leading-tight">
+          FOCUSED SERVICES.<br>
+          <span class="text-brand-blue">MEASURABLE VALUE.</span>
+        </h2>
+      </div>
+
+      <!-- 4 High-Converting Service Pillars (2x2 Grid) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Pillar 01 -->
+        <div class="bg-white border border-gray-200 rounded-none p-8 sm:p-10 hover:border-brand-blue transition-all duration-300 group flex flex-col justify-between shadow-xs hover:shadow-md">
+          <div>
+            <div class="font-tech text-base sm:text-lg font-bold text-brand-blue mb-2">01</div>
+            <h3 class="text-2xl font-heading font-bold uppercase text-brand-navy mb-4 group-hover:text-brand-blue transition-colors">
+              HIGH-PERFORMANCE WEBSITES &amp; PORTALS
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6 font-body">
+              Custom-built web platforms engineered on Next.js, React, and Tailwind. We replace fragile site builders with clean, resilient architectures that load in milliseconds and withstand massive traffic spikes.
+            </p>
+          </div>
+
+          <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-tech text-brand-navy font-semibold">TYPICAL TURNAROUND: 3-4 WEEKS</span>
+            <a href="#audit-section" class="font-tech text-xs uppercase text-brand-blue hover:text-brand-navy flex items-center gap-1 font-bold group-hover:translate-x-1 transition-transform">
+              EXPLORE SCOPE &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Pillar 02 -->
+        <div class="bg-white border border-gray-200 rounded-none p-8 sm:p-10 hover:border-brand-blue transition-all duration-300 group flex flex-col justify-between shadow-xs hover:shadow-md">
+          <div>
+            <div class="font-tech text-base sm:text-lg font-bold text-brand-blue mb-2">02</div>
+            <h3 class="text-2xl font-heading font-bold uppercase text-brand-navy mb-4 group-hover:text-brand-blue transition-colors">
+              TECHNICAL SEO &amp; PERFORMANCE ACCELERATION
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6 font-body">
+              We dissect what is silently choking your rankings and conversions. From bloated bundle sizes and render-blocking scripts to crawl budget inefficiencies, we remediate your entire stack.
+            </p>
+          </div>
+
+          <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-tech text-brand-navy font-semibold">TYPICAL TURNAROUND: 48-72 HOURS</span>
+            <a href="#audit-section" onclick="prefillAudit()" class="font-tech text-xs uppercase text-brand-blue hover:text-brand-navy flex items-center gap-1 font-bold group-hover:translate-x-1 transition-transform">
+              REQUEST AUDIT &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Pillar 03 -->
+        <div class="bg-white border border-gray-200 rounded-none p-8 sm:p-10 hover:border-brand-blue transition-all duration-300 group flex flex-col justify-between shadow-xs hover:shadow-md">
+          <div>
+            <div class="font-tech text-base sm:text-lg font-bold text-brand-blue mb-2">03</div>
+            <h3 class="text-2xl font-heading font-bold uppercase text-brand-navy mb-4 group-hover:text-brand-blue transition-colors">
+              HIGH-CONVERTING UX &amp; FUNNEL REDESIGN
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6 font-body">
+              Design that commands authority. We structure user journeys that dissolve buyer friction, build instant executive trust, and funnel visitors directly toward booked meetings and sales demos.
+            </p>
+          </div>
+
+          <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-tech text-brand-navy font-semibold">TYPICAL TURNAROUND: 2-3 WEEKS</span>
+            <a href="#audit-section" class="font-tech text-xs uppercase text-brand-blue hover:text-brand-navy flex items-center gap-1 font-bold group-hover:translate-x-1 transition-transform">
+              EXPLORE CRO &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Pillar 04 -->
+        <div class="bg-white border border-gray-200 rounded-none p-8 sm:p-10 hover:border-brand-blue transition-all duration-300 group flex flex-col justify-between shadow-xs hover:shadow-md">
+          <div>
+            <div class="font-tech text-base sm:text-lg font-bold text-brand-blue mb-2">04</div>
+            <h3 class="text-2xl font-heading font-bold uppercase text-brand-navy mb-4 group-hover:text-brand-blue transition-colors">
+              CUSTOM WEB APPS &amp; SAAS MVPS
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6 font-body">
+              From internal dashboards and customer portals to full-scale SaaS prototypes. We engineer resilient APIs, databases, authentication, and payment rails ready to support your first 50,000 users.
+            </p>
+          </div>
+
+          <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-tech text-brand-navy font-semibold">TYPICAL TURNAROUND: 4-6 WEEKS</span>
+            <a href="#audit-section" class="font-tech text-xs uppercase text-brand-blue hover:text-brand-navy flex items-center gap-1 font-bold group-hover:translate-x-1 transition-transform">
+              EXPLORE MVPS &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Pillar 05: Centered at the end (2-column layout) -->
+        <div class="bg-white border border-gray-200 rounded-none p-8 sm:p-10 hover:border-brand-blue transition-all duration-300 group flex flex-col justify-between shadow-xs hover:shadow-md md:col-span-2 md:w-[calc(50%-1rem)] md:mx-auto">
+          <div>
+            <div class="font-tech text-base sm:text-lg font-bold text-brand-blue mb-2">05</div>
+            <h3 class="text-2xl font-heading font-bold uppercase text-brand-navy mb-4 group-hover:text-brand-blue transition-colors">
+              AI - ENGINEERING SOLUTIONS
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6 font-body">
+              Custom AI integrations, LLM workflows, and intelligent automation systems built for specialized business operations. We translate complex engineering challenges into resilient, high speed platforms and connected infrastructure.
+            </p>
+          </div>
+
+          <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs font-tech text-brand-navy font-semibold">TYPICAL TURNAROUND: DEPENDENT</span>
+            <a href="#audit-section" onclick="prefillScope('ai')" class="font-tech text-xs uppercase text-brand-blue hover:text-brand-navy flex items-center gap-1 font-bold group-hover:translate-x-1 transition-transform">
+              EXPLORE SOLUTIONS &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 2: PROCESS ================= -->
+  <section id="process" class="py-24 lg:py-32 bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+        <div>
+          <span class="font-tech text-xs tracking-wider uppercase text-brand-blue font-semibold block mb-3">
+            02 // PROCESS
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold uppercase text-brand-navy tracking-tight">
+            CLEAR FROM DAY ONE.
+          </h2>
+        </div>
+        <p class="text-slate-600 font-body text-sm sm:text-base max-w-md leading-relaxed">
+          A structured agile process that keeps projects on time, eliminates scope creep, and makes commercial outcomes tangible at every step.
+        </p>
+      </div>
+
+      <!-- 4-Step Milestone Pipeline (Clean, Sharp Design) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Step 01: Discover -->
+        <div class="bg-white p-6 sm:p-8 rounded-none border border-gray-200 hover:border-brand-blue transition-colors group">
+          <div class="font-tech text-xs text-brand-blue font-bold mb-2">01 // DISCOVERY</div>
+          <h3 class="text-xl font-heading font-bold uppercase text-brand-navy mb-3">DISCOVER &amp; AUDIT</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-body">
+            We tear down your current bottlenecks, analyze high-intent competitor weaknesses, and establish strict speed and conversion KPIs.
+          </p>
+        </div>
+
+        <!-- Step 02: Define -->
+        <div class="bg-white p-6 sm:p-8 rounded-none border border-gray-200 hover:border-brand-blue transition-colors group">
+          <div class="font-tech text-xs text-brand-blue font-bold mb-2">02 // ARCHITECTURE</div>
+          <h3 class="text-xl font-heading font-bold uppercase text-brand-navy mb-3">DEFINE &amp; WIREFRAME</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-body">
+            Design systems, wireframes, and schema pipelines. You interact with functional prototypes before a single line of backend code is committed.
+          </p>
+        </div>
+
+        <!-- Step 03: Deliver -->
+        <div class="bg-white p-6 sm:p-8 rounded-none border border-gray-200 hover:border-brand-blue transition-colors group">
+          <div class="font-tech text-xs text-brand-blue font-bold mb-2">03 // ENGINEERING</div>
+          <h3 class="text-xl font-heading font-bold uppercase text-brand-navy mb-3">DELIVER &amp; HARDEN</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-body">
+            Rapid, test-driven Next.js and API engineering. Pixel-perfect fidelity, Core Web Vitals compliance, and end-to-end user testing.
+          </p>
+        </div>
+
+        <!-- Step 04: Scale -->
+        <div class="bg-white p-6 sm:p-8 rounded-none border border-gray-200 hover:border-brand-blue transition-colors group">
+          <div class="font-tech text-xs text-brand-blue font-bold mb-2">04 // HYPER-SCALE</div>
+          <h3 class="text-xl font-heading font-bold uppercase text-brand-navy mb-3">DEPLOY &amp; SCALE</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-body">
+            Zero-downtime DNS deployment, live telemetry initialization, and 60 days of post-launch conversion optimization support.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3: SCOPE ESTIMATOR ================= -->
+  <section id="calculator" class="py-20 lg:py-28 bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mx-auto text-center mb-14">
+        <span class="font-tech text-xs tracking-wider uppercase text-brand-blue font-semibold block mb-3">
+          03 // SCOPE ESTIMATOR
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-extrabold uppercase text-brand-navy mb-4">
+          SCOPE YOUR BUILD IN 30 SECONDS.
+        </h2>
+        <p class="text-slate-600 font-body text-base">
+          Configure your digital requirements to receive an instant architectural blueprint, estimated duration, and expected conversion uplift.
+        </p>
+      </div>
+
+      <!-- Interactive Calculator Card -->
+      <div class="max-w-5xl mx-auto bg-white border-2 border-brand-navy rounded-none shadow-lg overflow-hidden">
+        <div class="p-6 sm:p-10">
+          
+          <!-- Step 1: Project Type -->
+          <div class="mb-8">
+            <label class="block font-tech text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">
+              STEP 01 // SELECT PROJECT REQUIREMENT
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+              <button onclick="setScopeType('website', this)" class="scope-type-btn p-3 text-left border-2 border-brand-blue bg-blue-50/50 rounded-none transition-all">
+                <div class="font-heading font-bold text-xs uppercase text-brand-navy">Marketing Platform</div>
+                <div class="text-[11px] font-tech text-slate-500 mt-1">High-Converting Website</div>
+              </button>
+              <button onclick="setScopeType('portal', this)" class="scope-type-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all">
+                <div class="font-heading font-bold text-xs uppercase text-brand-navy">Web App / Portal</div>
+                <div class="text-[11px] font-tech text-slate-500 mt-1">SaaS MVP or Client Tool</div>
+              </button>
+              <button onclick="setScopeType('branding', this)" class="scope-type-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all">
+                <div class="font-heading font-bold text-xs uppercase text-brand-navy">Personal Branding</div>
+                <div class="text-[11px] font-tech text-slate-500 mt-1">Executive &amp; Founder Sites</div>
+              </button>
+              <button onclick="setScopeType('maintenance', this)" class="scope-type-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all">
+                <div class="font-heading font-bold text-xs uppercase text-brand-navy">Site Maintenance</div>
+                <div class="text-[11px] font-tech text-slate-500 mt-1">Existing Sites &amp; Upkeep</div>
+              </button>
+              <button onclick="setScopeType('ai', this)" class="scope-type-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all">
+                <div class="font-heading font-bold text-xs uppercase text-brand-navy">AI - Engineering Solutions</div>
+                <div class="text-[11px] font-tech text-slate-500 mt-1">Custom AI, Agents &amp; Automation</div>
+              </button>
+              <button onclick="setScopeType('audit', this)" class="scope-type-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all">
+                <div class="font-heading font-bold text-xs uppercase text-brand-navy">Forensic Audit</div>
+                <div class="text-[11px] font-tech text-slate-500 mt-1">Speed, Core Vitals, SEO</div>
+              </button>
+              <button onclick="setScopeType('enterprise', this)" class="scope-type-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all sm:col-span-2 lg:col-span-1">
+                <div class="font-heading font-bold text-xs uppercase text-brand-navy">Full Overhaul</div>
+                <div class="text-[11px] font-tech text-slate-500 mt-1">End-to-End Re-architecture</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Traffic / Scale -->
+          <div class="mb-8">
+            <label class="block font-tech text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">
+              STEP 02 // MONTHLY PIPELINE OR TRAFFIC VOLUME
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button onclick="setScale('seed', this)" class="scale-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all">
+                <div class="font-heading font-bold text-xs uppercase text-brand-navy">&lt; 10,000 Visitors</div>
+                <div class="text-[11px] font-tech text-slate-500 mt-1">Foundational Scaling</div>
+              </button>
+              <button onclick="setScale('growth', this)" class="scale-btn p-3 text-left border-2 border-brand-blue bg-blue-50/50 rounded-none transition-all">
+                <div class="font-heading font-bold text-xs uppercase text-brand-navy">10,000 &ndash; 100,000</div>
+                <div class="text-[11px] font-tech text-slate-500 mt-1">High-Velocity Growth</div>
+              </button>
+              <button onclick="setScale('enterprise', this)" class="scale-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all">
+                <div class="font-heading font-bold text-xs uppercase text-brand-navy">100,000+ Visitors</div>
+                <div class="text-[11px] font-tech text-slate-500 mt-1">Mission-Critical Scale</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Output Box -->
+          <div class="p-6 sm:p-8 bg-brand-navy text-white rounded-none border border-brand-navyBorder">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+              <div>
+                <h4 id="calc-blueprint-name" class="text-xl sm:text-2xl font-heading font-bold text-white uppercase">
+                  MARKETING PLATFORM
+                </h4>
+              </div>
+              <div class="text-left md:text-right flex-shrink-0">
+                <span class="text-[10px] font-tech text-slate-400 uppercase tracking-widest block mb-1">ESTIMATED DURATION</span>
+                <span id="calc-duration" class="text-lg sm:text-xl font-tech font-bold text-emerald-400">3 WEEKS (18 BUSINESS DAYS)</span>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="mt-6 pt-6 border-t border-brand-navyBorder flex flex-col sm:flex-row justify-between items-center gap-4">
+              <span class="text-xs text-slate-300 font-tech">
+                Includes 60-day post-launch warranty &amp; telemetry monitoring.
+              </span>
+              <a href="#audit-section" onclick="prefillScope()" class="w-full sm:w-auto btn-arix btn-arix-primary bg-brand-blue border-brand-blue hover:bg-brand-blueHover hover:border-brand-blueHover min-h-[48px] px-6 py-3 text-[11px] gap-6 group">
+                <span>LOCK IN THIS SCOPE</span>
+                <span class="group-hover:translate-x-1 transition-transform font-bold text-sm">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4: WHY US? ================= -->
+  <section id="why-us" class="py-20 lg:py-28 bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <span class="font-tech text-xs tracking-wider uppercase text-brand-blue font-semibold block mb-3">
+          04 // WHY US?
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-extrabold uppercase text-brand-navy mb-4">
+          HOW WE COMPARE TO TRADITIONAL OPTIONS
+        </h2>
+        <p class="text-slate-600 font-body text-base">
+          Why growing enterprises choose a specialized technical unit over bloated generic agencies or unpredictable freelancers.
+        </p>
+      </div>
+
+      <!-- Comparison Matrix Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-200 font-tech text-xs">
+          <thead>
+            <tr class="bg-slate-50 border-b border-gray-200">
+              <th class="p-4 text-left font-bold text-slate-700 w-1/4">ENGINEERING PILLAR</th>
+              <th class="p-4 text-left font-bold text-slate-400 w-1/4">TRADITIONAL AGENCY</th>
+              <th class="p-4 text-left font-bold text-slate-400 w-1/4">CHEAP FREELANCERS</th>
+              <th class="p-4 text-left font-bold text-white bg-brand-navy w-1/4">AXOLUTIONS</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr>
+              <td class="p-4 font-bold text-brand-navy bg-white">Turnaround Velocity</td>
+              <td class="p-4 text-slate-500 bg-white">3 to 6 Months of meetings</td>
+              <td class="p-4 text-slate-500 bg-white">Unpredictable / Ghosting</td>
+              <td class="p-4 font-bold text-brand-blue bg-blue-50/40">2 to 4 Weeks Delivery</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-brand-navy bg-white">Core Web Vitals Guarantee</td>
+              <td class="p-4 text-slate-500 bg-white">40 &ndash; 65 (Bloated WP)</td>
+              <td class="p-4 text-slate-500 bg-white">Rarely measured</td>
+              <td class="p-4 font-bold text-brand-blue bg-blue-50/40">95 &ndash; 100 Guaranteed</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-brand-navy bg-white">Team Composition</td>
+              <td class="p-4 text-slate-500 bg-white">Junior hand-offs &amp; account reps</td>
+              <td class="p-4 text-slate-500 bg-white">Solo generalist</td>
+              <td class="p-4 font-bold text-brand-blue bg-blue-50/40">Direct Senior Engineers Only</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-brand-navy bg-white">Code Ownership</td>
+              <td class="p-4 text-slate-500 bg-white">Proprietary theme lock-in</td>
+              <td class="p-4 text-slate-500 bg-white">Unclear licensing / snippets</td>
+              <td class="p-4 font-bold text-brand-blue bg-blue-50/40">100% Full IP Transfer</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-brand-navy bg-white">Conversion Focus</td>
+              <td class="p-4 text-slate-500 bg-white">Visual aesthetics only</td>
+              <td class="p-4 text-slate-500 bg-white">"Just makes it work"</td>
+              <td class="p-4 font-bold text-brand-blue bg-blue-50/40">Engineered for Closed Pipeline</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 6: IDEAL PARTNERSHIPS ================= -->
+  <section class="py-24 lg:py-32 bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Exact Headline Heritage -->
+        <div class="lg:col-span-5">
+          <span class="font-tech text-xs tracking-wider uppercase text-brand-blue font-semibold block mb-3">
+            05 // IDEAL PARTNERSHIPS
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-heading font-extrabold uppercase text-brand-navy tracking-tight leading-none mb-6">
+            SMALL TEAM.<br>
+            <span class="text-brand-blue">SERIOUS</span><br>
+            OUTCOMES.
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            We intentionally cap our active client bandwidth to 3 engagements at any time. This gives every partner direct, unmediated access to senior systems architects.
+          </p>
+        </div>
+
+        <!-- Right Column: High-Impact Persona Cards -->
+        <div class="lg:col-span-7 space-y-4">
+          
+          <div class="p-6 bg-white border border-gray-200 rounded-none hover:border-brand-blue transition-colors flex items-start gap-4">
+            <span class="font-tech text-brand-blue font-bold text-lg">&mdash;</span>
+            <div>
+              <h4 class="font-heading font-bold text-base uppercase text-brand-navy mb-1">
+                Funded Startups &amp; SaaS Founders
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed font-body">
+                Who need a battle-tested web application or marketing platform to demonstrate technical maturity to investors and enterprise buyers.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 bg-white border border-gray-200 rounded-none hover:border-brand-blue transition-colors flex items-start gap-4">
+            <span class="font-tech text-brand-blue font-bold text-lg">&mdash;</span>
+            <div>
+              <h4 class="font-heading font-bold text-base uppercase text-brand-navy mb-1">
+                Established B2B Firms Overhauling Legacy Systems
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed font-body">
+                Whose current website no longer reflects their true market stature and suffers from slow loading times, security vulnerabilities, or poor mobile UX.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 bg-white border border-gray-200 rounded-none hover:border-brand-blue transition-colors flex items-start gap-4">
+            <span class="font-tech text-brand-blue font-bold text-lg">&mdash;</span>
+            <div>
+              <h4 class="font-heading font-bold text-base uppercase text-brand-navy mb-1">
+                Commercial Leaders Demanding Measurable ROI
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed font-body">
+                Who are done paying retainer fees for "creative fluff" and require engineered architectures directly tied to inbound qualification and closed revenue.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 6: CONVERSION CTA & AUDIT FORM (The Closer) ================= -->
+  <section id="audit-section" class="py-24 lg:py-32 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left: Direct Offer & Contact Info -->
+        <div class="lg:col-span-6">
+          <span class="font-tech text-xs tracking-wider uppercase text-brand-blue font-semibold block mb-3">
+            06 // INITIATE TRANSMISSION
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold uppercase text-brand-navy tracking-tight leading-tight mb-6">
+            LET'S BUILD WHAT YOUR BUSINESS NEEDS NEXT.
+          </h2>
+          <p class="text-brand-slateText text-base leading-relaxed mb-8">
+            Submit your current domain or project overview. We will return an exhaustive 48-hour architectural review, Core Web Vitals report, and fixed-price technical blueprint.
+          </p>
+
+          <!-- Direct Email Link (Preserving Screenshot Heritage) -->
+          <div class="mb-10">
+            <div class="text-xs font-tech text-slate-400 uppercase tracking-wider mb-2">DIRECT TECHNICAL INQUIRY</div>
+            <a href="mailto:axolutions@arix.pk" class="inline-flex items-center gap-3 font-heading font-bold text-2xl sm:text-3xl text-brand-navy hover:text-brand-blue transition-colors group">
+              <span>axolutions@arix.pk</span>
+              <span class="text-brand-blue group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Lead & Audit Intake Form -->
+        <div class="lg:col-span-6">
+          <div class="bg-white border-2 border-brand-navy p-8 sm:p-10 rounded-none shadow-xl relative">
+            <div class="pb-6 border-b border-gray-200 mb-6">
+              <span class="font-tech text-xs text-brand-blue font-bold uppercase">PROJECT INTAKE</span>
+              <h3 class="font-heading font-bold text-xl uppercase text-brand-navy">START A PROJECT</h3>
+            </div>
+
+            <form id="project-intake-form" onsubmit="handleFormSubmit(event)" class="space-y-4 font-tech text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-slate-700 font-bold mb-1">YOUR NAME *</label>
+                  <input type="text" required placeholder="e.g. Alex Vance" class="w-full px-4 py-3 bg-slate-50 border border-gray-200 rounded-none focus:border-brand-blue focus:bg-white focus:outline-none transition-colors">
+                </div>
+                <div>
+                  <label class="block text-slate-700 font-bold mb-1">EMAIL *</label>
+                  <input type="email" required placeholder="alex@company.com" class="w-full px-4 py-3 bg-slate-50 border border-gray-200 rounded-none focus:border-brand-blue focus:bg-white focus:outline-none transition-colors">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-slate-700 font-bold mb-1">CURRENT WEBSITE / DOMAIN</label>
+                  <input type="text" placeholder="https://yourcompany.com" class="w-full px-4 py-3 bg-slate-50 border border-gray-200 rounded-none focus:border-brand-blue focus:bg-white focus:outline-none transition-colors">
+                </div>
+                <div>
+                  <label class="block text-slate-700 font-bold mb-1">TARGET TIMELINE</label>
+                  <select id="form-timeline" class="w-full px-4 py-3 bg-slate-50 border border-gray-200 rounded-none focus:border-brand-blue focus:bg-white focus:outline-none transition-colors text-slate-700">
+                    <option>Urgent Timeline (2-3 Weeks)</option>
+                    <option selected>Standard Timeline (3-5 Weeks)</option>
+                    <option>Q2 Enterprise Deployment</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-slate-700 font-bold mb-1">PROJECT SCOPE OVERVIEW *</label>
+                <textarea id="form-message" rows="3" required placeholder="Tell us what you want to build or what's currently holding your site back..." class="w-full px-4 py-3 bg-slate-50 border border-gray-200 rounded-none focus:border-brand-blue focus:bg-white focus:outline-none transition-colors"></textarea>
+              </div>
+
+              <div class="pt-2">
+                <button type="submit" class="w-full btn-arix btn-arix-primary min-h-[54px] px-6 py-4 justify-between group">
+                  <span>SEND MESSAGE</span>
+                  <span class="group-hover:translate-x-1 transition-transform font-bold text-sm">&rarr;</span>
+                </button>
+              </div>
+
+              <div id="form-success-message" class="hidden p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-none text-center font-bold">
+                ✓ Transmission received. Our lead architect will review your project and email you within 48 hours.
+              </div>
+
+              <p class="text-[11px] text-slate-400 text-center pt-2">
+                Protected by NDA standards. We never share your data or contact details.
+              </p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER (Exact Brand Architecture from Screenshot) ================= -->
+  <footer class="bg-slate-50 border-t border-gray-200 py-16 text-slate-600 font-tech text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-gray-200">
+        
+        <!-- Brand / Identity -->
+        <div class="md:col-span-4 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="axolutions-logo-mark.png" alt="Axolutions Logo" class="h-8 w-auto object-contain" />
+            <div class="font-heading font-bold text-xl tracking-tight text-brand-navy">
+              AXOLUTIONS
+            </div>
+          </div>
+          <p class="text-slate-500 font-body text-xs max-w-sm leading-relaxed">
+            Modern websites and tailored technology systems engineered for ambitious, growth-focused businesses. An enterprise subsidiary of Arix.
+          </p>
+        </div>
+
+        <!-- Links Column 1: Exactly matches the 5 services on our page -->
+        <div class="md:col-span-3 space-y-3">
+          <div class="font-bold text-brand-navy uppercase tracking-wider text-[11px]">SERVICES</div>
+          <ul class="space-y-2 text-slate-500 text-[11px]">
+            <li><a href="#services" class="hover:text-brand-blue">Websites &amp; Portals</a></li>
+            <li><a href="#services" class="hover:text-brand-blue">Technical SEO &amp; Speed</a></li>
+            <li><a href="#services" class="hover:text-brand-blue">UX &amp; Funnel Redesign</a></li>
+            <li><a href="#services" class="hover:text-brand-blue">Custom Web Apps &amp; SaaS</a></li>
+            <li><a href="#services" class="hover:text-brand-blue">Engineering &amp; Tech Solutions</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Column 2 -->
+        <div class="md:col-span-2 space-y-3">
+          <div class="font-bold text-brand-navy uppercase tracking-wider text-[11px]">PARENT ENTITY</div>
+          <ul class="space-y-2 text-slate-500 text-[11px]">
+            <li><a href="https://arix.pk" target="_blank" class="hover:text-brand-blue">Arix Enterprise</a></li>
+            <li><a href="#process" class="hover:text-brand-blue">Process</a></li>
+            <li><a href="#why-us" class="hover:text-brand-blue">Why Us?</a></li>
+            <li><a href="#audit-section" onclick="prefillAudit()" class="hover:text-brand-blue">Direct Booking</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Column 3: Contact -->
+        <div class="md:col-span-3 space-y-3">
+          <div class="font-bold text-brand-navy uppercase tracking-wider text-[11px]">DIRECT INQUIRIES</div>
+          <div class="text-slate-600">
+            <a href="mailto:axolutions@arix.pk" class="text-brand-navy font-bold hover:text-brand-blue flex items-center gap-1">
+              axolutions@arix.pk &nearr;
+            </a>
+          </div>
+          <div class="text-slate-500 text-[11px] leading-relaxed">
+            Office #7, 2nd Floor, Ahmed Center<br>
+            I-8 Markaz, Islamabad 46000 &bull; Pakistan
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Legal & Subcompany attribution -->
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-400">
+        <div>
+          &copy; 2026 Axolutions. A division of Arix Enterprise. All rights reserved.
+        </div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-slate-600">Privacy Protocol</a>
+          <a href="#" class="hover:text-slate-600">Terms of Engagement</a>
+          <a href="#" class="hover:text-slate-600">Security Architecture</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= INTERACTIVE JAVASCRIPT ================= -->
+  <script>
+    // Hero tab switcher
+    function switchHeroTab(tabKey) {
+      const tabs = ['vitals', 'stack', 'security'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const content = document.getElementById(`tab-content-${t}`);
+        if (btn && content) {
+          if (t === tabKey) {
+            btn.className = "py-2 font-bold bg-white text-brand-navy shadow-xs rounded-none border border-gray-200";
+            content.classList.remove('hidden');
+          } else {
+            btn.className = "py-2 text-slate-500 hover:text-brand-navy rounded-none";
+            content.classList.add('hidden');
+          }
+        }
+      });
+    }
+
+    // Scope Calculator State
+    let currentScope = {
+      type: 'website',
+      scale: 'growth'
+    };
+
+    const scopeMap = {
+      website: {
+        name: 'MARKETING PLATFORM',
+        duration: '3 WEEKS (18 BUSINESS DAYS)'
+      },
+      portal: {
+        name: 'WEB APP / PORTAL',
+        duration: '4 TO 5 WEEKS'
+      },
+      branding: {
+        name: 'PERSONAL BRANDING',
+        duration: '2 TO 3 WEEKS'
+      },
+      maintenance: {
+        name: 'SITE MAINTENANCE',
+        duration: 'ONGOING MONTHLY UPKEEP'
+      },
+      ai: {
+        name: 'AI - ENGINEERING SOLUTIONS',
+        duration: '2 TO 4 WEEKS'
+      },
+      hardware: {
+        name: 'AI - ENGINEERING SOLUTIONS',
+        duration: '2 TO 4 WEEKS'
+      },
+      audit: {
+        name: 'FORENSIC AUDIT',
+        duration: '48 TO 72 HOURS'
+      },
+      enterprise: {
+        name: 'FULL OVERHAUL',
+        duration: '5 TO 6 WEEKS'
+      }
+    };
+
+    function setScopeType(typeKey, element) {
+      currentScope.type = typeKey;
+      document.querySelectorAll('.scope-type-btn').forEach(btn => {
+        btn.className = 'scope-type-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all';
+      });
+      element.className = 'scope-type-btn p-3 text-left border-2 border-brand-blue bg-blue-50/50 rounded-none transition-all';
+      updateScopeDisplay();
+    }
+
+    function setScale(scaleKey, element) {
+      currentScope.scale = scaleKey;
+      document.querySelectorAll('.scale-btn').forEach(btn => {
+        btn.className = 'scale-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all';
+      });
+      element.className = 'scale-btn p-3 text-left border-2 border-brand-blue bg-blue-50/50 rounded-none transition-all';
+      updateScopeDisplay();
+    }
+
+    function updateScopeDisplay() {
+      const data = scopeMap[currentScope.type];
+      document.getElementById('calc-blueprint-name').textContent = data.name;
+      document.getElementById('calc-duration').textContent = data.duration;
+    }
+
+    // 3D Bookshelf Infinite Auto-Scroll & Card Navigation
+    const shelfTrack = document.getElementById('bookshelf-track');
+    let autoScrollActive = true;
+    let isUserInteracting = false;
+    let oneSetWidth = 0;
+    let scrollPos = 0;
+    let lastTimestamp = null;
+    const SCROLL_SPEED_PX_SEC = 36; // Constant, smooth linear velocity (pixels per second)
+
+    // Card click & drag tracking (prevents accidental clicks while dragging)
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+    let wasDragged = false;
+
+    function cardPointerDown(e) {
+      pointerStartX = e.clientX;
+      pointerStartY = e.clientY;
+      wasDragged = false;
+    }
+
+    function handleCardClick(url, e) {
+      if (wasDragged) {
+        if (e) e.preventDefault();
+        return;
+      }
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    function calcOneSetWidth() {
+      if (!shelfTrack) return;
+      const cards = shelfTrack.querySelectorAll('.shelf-window');
+      if (cards.length >= 6) {
+        const firstCard = cards[0];
+        const sixthCard = cards[5];
+        if (firstCard && sixthCard) {
+          oneSetWidth = sixthCard.offsetLeft - firstCard.offsetLeft;
+        }
+      }
+      if (!oneSetWidth && cards.length > 0) {
+        oneSetWidth = 5 * (cards[0].offsetWidth + 22);
+      }
+    }
+
+    window.addEventListener('load', () => {
+      calcOneSetWidth();
+      if (shelfTrack) scrollPos = shelfTrack.scrollLeft;
+    });
+    window.addEventListener('resize', calcOneSetWidth);
+
+    function stepAutoScroll(timestamp) {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const delta = Math.min((timestamp - lastTimestamp) / 1000, 0.1);
+      lastTimestamp = timestamp;
+
+      if (autoScrollActive && !isUserInteracting && shelfTrack) {
+        if (!oneSetWidth) calcOneSetWidth();
+        scrollPos += SCROLL_SPEED_PX_SEC * delta;
+        if (oneSetWidth > 0 && scrollPos >= oneSetWidth) {
+          scrollPos -= oneSetWidth;
+        }
+        shelfTrack.scrollLeft = scrollPos;
+      } else if (shelfTrack) {
+        // Keep smooth accumulator in sync with manual user drag or wheel
+        scrollPos = shelfTrack.scrollLeft;
+      }
+      requestAnimationFrame(stepAutoScroll);
+    }
+    requestAnimationFrame(stepAutoScroll);
+
+    if (shelfTrack) {
+      // 1. Hover pause: immediately stop scrolling when mouse enters track or any card
+      shelfTrack.addEventListener('mouseenter', () => {
+        autoScrollActive = false;
+      });
+
+      // Resume auto-scroll when mouse leaves
+      shelfTrack.addEventListener('mouseleave', () => {
+        if (!isUserInteracting) {
+          autoScrollActive = true;
+          lastTimestamp = null;
+        }
+      });
+
+      // 2. Mouse Wheel control
+      shelfTrack.addEventListener('wheel', (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          shelfTrack.scrollLeft += e.deltaY * 0.9;
+          scrollPos = shelfTrack.scrollLeft;
+          if (oneSetWidth > 0) {
+            if (shelfTrack.scrollLeft >= oneSetWidth) {
+              shelfTrack.scrollLeft -= oneSetWidth;
+              scrollPos = shelfTrack.scrollLeft;
+            }
+            if (shelfTrack.scrollLeft < 0) {
+              shelfTrack.scrollLeft += oneSetWidth;
+              scrollPos = shelfTrack.scrollLeft;
+            }
+          }
+        }
+      }, { passive: false });
+
+      // 3. Mouse Drag control
+      let isDown = false;
+      let startX;
+      let startScrollLeft;
+
+      shelfTrack.addEventListener('mousedown', (e) => {
+        isUserInteracting = true;
+        autoScrollActive = false;
+        isDown = true;
+        startX = e.pageX - shelfTrack.offsetLeft;
+        startScrollLeft = shelfTrack.scrollLeft;
+        cardPointerDown(e);
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDown) {
+          isDown = false;
+          setTimeout(() => {
+            isUserInteracting = false;
+            if (!shelfTrack.matches(':hover')) {
+              autoScrollActive = true;
+              lastTimestamp = null;
+            }
+          }, 350);
+        }
+      });
+
+      shelfTrack.addEventListener('mousemove', (e) => {
+        if (Math.abs(e.clientX - pointerStartX) > 6 || Math.abs(e.clientY - pointerStartY) > 6) {
+          wasDragged = true;
+        }
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - shelfTrack.offsetLeft;
+        const walk = (x - startX) * 1.3;
+        shelfTrack.scrollLeft = startScrollLeft - walk;
+        scrollPos = shelfTrack.scrollLeft;
+        if (oneSetWidth > 0) {
+          if (shelfTrack.scrollLeft >= oneSetWidth) {
+            shelfTrack.scrollLeft -= oneSetWidth;
+            scrollPos = shelfTrack.scrollLeft;
+          }
+          if (shelfTrack.scrollLeft < 0) {
+            shelfTrack.scrollLeft += oneSetWidth;
+            scrollPos = shelfTrack.scrollLeft;
+          }
+        }
+      });
+    }
+
+    function prefillScope(targetType) {
+      if (targetType && scopeMap[targetType]) {
+        currentScope.type = targetType;
+        const targetBtn = document.querySelector(`.scope-type-btn[onclick*="${targetType}"]`);
+        if (targetBtn) {
+          document.querySelectorAll('.scope-type-btn').forEach(btn => {
+            btn.className = 'scope-type-btn p-3 text-left border-2 border-gray-200 bg-white hover:border-slate-400 rounded-none transition-all';
+          });
+          targetBtn.className = 'scope-type-btn p-3 text-left border-2 border-brand-blue bg-blue-50/50 rounded-none transition-all';
+        }
+        updateScopeDisplay();
+      }
+      const data = scopeMap[currentScope.type];
+      const msgBox = document.getElementById('form-message');
+      if (msgBox) {
+        if (currentScope.type === 'ai' || currentScope.type === 'hardware') {
+          msgBox.value = `Interested in the "AI - Engineering Solutions" package (${data.duration}). Target scale: ${currentScope.scale}. Looking to discuss custom AI models, automation workflows, and technical implementation schedule.`;
+        } else {
+          msgBox.value = `Interested in the "${data.name}" package (${data.duration}). Target scale: ${currentScope.scale}. Looking for technical audit and turnaround schedule.`;
+        }
+      }
+      setTimeout(() => {
+        const auditSec = document.getElementById('audit-section');
+        if (auditSec) auditSec.scrollIntoView({ behavior: 'smooth' });
+        if (msgBox) msgBox.focus();
+      }, 50);
+    }
+
+    function prefillAudit() {
+      const msgBox = document.getElementById('form-message');
+      if (msgBox) {
+        msgBox.value = "Requesting a complimentary 48-Hour Technical & Codebase Audit. Please review our current domain architecture, Core Web Vitals, and conversion pipeline.";
+      }
+      const timelineSelect = document.getElementById('form-timeline');
+      if (timelineSelect) {
+        timelineSelect.selectedIndex = 0;
+      }
+      setTimeout(() => {
+        const auditSec = document.getElementById('audit-section');
+        if (auditSec) auditSec.scrollIntoView({ behavior: 'smooth' });
+        if (msgBox) msgBox.focus();
+      }, 50);
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const form = document.getElementById('project-intake-form');
+      const successMsg = document.getElementById('form-success-message');
+      
+      // Visual feedback
+      successMsg.classList.remove('hidden');
+      form.reset();
+      
+      setTimeout(() => {
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+  </script>
+</body>
+</html>
