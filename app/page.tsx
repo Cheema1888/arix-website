@@ -25,7 +25,6 @@ export default async function Home() {
         <div className="scan-line" aria-hidden="true" />
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-content shell">
-          <p className="eyebrow"><span className="status-dot" /> Physical AI for precision agriculture</p>
           <h1>See disease sooner.<br /><span>Treat only what matters.</span></h1>
           <p className="hero-copy">ARIX is building an AI-powered crop intelligence system that surveys wheat fields, detects disease, and maps exactly where attention is needed.</p>
           <div className="hero-actions">

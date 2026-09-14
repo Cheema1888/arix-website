@@ -11,12 +11,8 @@ export default function SubCompaniesPage() {
     <main>
       {/* Hero Section */}
       <section className="page-hero subcompanies-hero">
-        <div className="subcompanies-orbit" aria-hidden="true">
-          <div><span>Arbots X</span><i /></div>
-          <div><span>Axolutions</span><i /></div>
-        </div>
+        <div className="subcompanies-orbit" aria-hidden="true" />
         <div className="shell">
-          <p className="eyebrow"><span className="status-dot" /> Venture Architecture</p>
           <h1>
             Why sub-companies?<br />
             Bootstrapping <span>physical AI.</span>
@@ -24,9 +20,6 @@ export default function SubCompaniesPage() {
           <p>
             An agricultural drone and physical AI company creating companion robotics and digital engineering platforms might seem unexpected. Here is the honest reality behind how we operate.
           </p>
-        </div>
-        <div className="page-hero-tag" aria-hidden="true">
-          <span>02</span> Dedicated Ventures
         </div>
       </section>
 
