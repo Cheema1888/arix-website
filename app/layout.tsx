@@ -35,5 +35,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var saved=localStorage.getItem('arix-theme-v2');document.documentElement.dataset.theme=saved==='dark'?'dark':'light';}catch(e){document.documentElement.dataset.theme='light';}})();` }} /></head><body className={`${geistSans.variable} ${geistMono.variable}`}><Navigation />{children}<Footer /><Analytics /><SpeedInsights /></body></html>;
+  return <html lang="en" data-theme="dark" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: `(function(){try{var saved=localStorage.getItem('arix-theme-v2');document.documentElement.dataset.theme=saved==='light'?'light':'dark';}catch(e){document.documentElement.dataset.theme='dark';}})();` }} /></head><body className={`${geistSans.variable} ${geistMono.variable}`}><Navigation />{children}<Footer /><Analytics /><SpeedInsights /></body></html>;
 }
