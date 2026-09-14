@@ -89,6 +89,23 @@ export default function SolutionsPage() {
   };
 
   useEffect(() => {
+    let link: HTMLLinkElement | null = document.querySelector("link[rel~='icon']");
+    const originalHref = link?.href;
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "icon";
+      document.head.appendChild(link);
+    }
+    link.href = "/axolutions-logo-mark.png";
+
+    return () => {
+      if (link && originalHref) {
+        link.href = originalHref;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     calcOneSetWidth();
     const handleResize = () => calcOneSetWidth();
     window.addEventListener('resize', handleResize);
@@ -300,14 +317,11 @@ export default function SolutionsPage() {
           <div className="flex items-center gap-4 flex-shrink-0">
             <button
               onClick={handlePrefillAudit}
-              className="hidden sm:inline-flex btn-arix btn-arix-primary min-h-[44px] px-5 py-2.5 text-[11px] gap-6 group"
+              className="inline-flex btn-arix btn-arix-primary min-h-[40px] sm:min-h-[44px] px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-[11px] gap-4 sm:gap-6 group cursor-pointer"
             >
               <span>START A PROJECT</span>
               <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
             </button>
-            <a href="#calculator" className="inline-flex sm:hidden btn-arix btn-arix-primary min-h-[38px] px-3 py-2 text-[10px]">
-              ESTIMATE
-            </a>
           </div>
         </div>
       </header>
@@ -384,7 +398,7 @@ export default function SolutionsPage() {
                                 className="font-tech text-[10px] text-emerald-400 font-bold hover:underline"
                                 title={`Open ${card.name} in new tab`}
                               >
-                                LIVE &nearr;
+                                LIVE ↗
                               </a>
                             ) : (
                               <span className="font-tech text-[10px] text-slate-400 font-bold">BUILT</span>
@@ -421,9 +435,8 @@ export default function SolutionsPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             <div className="p-5 rounded-none bg-white border border-blue-200/90 hover:border-brand-blue shadow-xs hover:shadow-md transition-all duration-200 group">
-              <div className="flex items-center justify-between mb-3">
+              <div className="mb-3">
                 <span className="font-tech text-sm text-brand-blue font-bold tracking-wider">01</span>
-                <span className="text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-sm font-bold">&nearr;</span>
               </div>
               <div className="font-heading font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-blue transition-colors uppercase leading-snug">
                 FINTECH &amp; INFRASTRUCTURE
@@ -431,9 +444,8 @@ export default function SolutionsPage() {
             </div>
 
             <div className="p-5 rounded-none bg-white border border-blue-200/90 hover:border-brand-blue shadow-xs hover:shadow-md transition-all duration-200 group">
-              <div className="flex items-center justify-between mb-3">
+              <div className="mb-3">
                 <span className="font-tech text-sm text-brand-blue font-bold tracking-wider">02</span>
-                <span className="text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-sm font-bold">&nearr;</span>
               </div>
               <div className="font-heading font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-blue transition-colors uppercase leading-snug">
                 B2B SAAS PLATFORMS
@@ -441,9 +453,8 @@ export default function SolutionsPage() {
             </div>
 
             <div className="p-5 rounded-none bg-white border border-blue-200/90 hover:border-brand-blue shadow-xs hover:shadow-md transition-all duration-200 group">
-              <div className="flex items-center justify-between mb-3">
+              <div className="mb-3">
                 <span className="font-tech text-sm text-brand-blue font-bold tracking-wider">03</span>
-                <span className="text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-sm font-bold">&nearr;</span>
               </div>
               <div className="font-heading font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-blue transition-colors uppercase leading-snug">
                 ENTERPRISE LOGISTICS
@@ -451,9 +462,8 @@ export default function SolutionsPage() {
             </div>
 
             <div className="p-5 rounded-none bg-white border border-blue-200/90 hover:border-brand-blue shadow-xs hover:shadow-md transition-all duration-200 group">
-              <div className="flex items-center justify-between mb-3">
+              <div className="mb-3">
                 <span className="font-tech text-sm text-brand-blue font-bold tracking-wider">04</span>
-                <span className="text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-sm font-bold">&nearr;</span>
               </div>
               <div className="font-heading font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-blue transition-colors uppercase leading-snug">
                 HEALTHCARE &amp; BIO TECH
@@ -461,9 +471,8 @@ export default function SolutionsPage() {
             </div>
 
             <div className="p-5 rounded-none bg-white border border-blue-200/90 hover:border-brand-blue shadow-xs hover:shadow-md transition-all duration-200 group col-span-2 sm:col-span-1">
-              <div className="flex items-center justify-between mb-3">
+              <div className="mb-3">
                 <span className="font-tech text-sm text-brand-blue font-bold tracking-wider">05</span>
-                <span className="text-brand-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-sm font-bold">&nearr;</span>
               </div>
               <div className="font-heading font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-blue transition-colors uppercase leading-snug">
                 HIGH-TICKET COMMERCE
@@ -902,7 +911,7 @@ export default function SolutionsPage() {
                   className="inline-flex items-center gap-3 font-heading font-bold text-2xl sm:text-3xl text-brand-navy hover:text-brand-blue transition-colors group"
                 >
                   <span>AXOLUTIONS@ARIX.PK</span>
-                  <span className="group-hover:translate-x-1 transition-transform">&nearr;</span>
+                  <span className="group-hover:translate-x-1 transition-transform">↗</span>
                 </a>
               </div>
             </div>
@@ -1034,8 +1043,8 @@ export default function SolutionsPage() {
             <div className="md:col-span-2">
               <span className="font-bold text-brand-blue uppercase tracking-widest block mb-4">PARENT ENTITY</span>
               <ul className="space-y-2 text-slate-600">
-                <li><a href="https://arix.pk" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-600 transition-colors">ARIX Core &nearr;</a></li>
-                <li><a href="https://arix.pk/arbots" target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue transition-colors">Arbots X &nearr;</a></li>
+                <li><a href="https://arix.pk" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-600 transition-colors">ARIX Core ↗</a></li>
+                <li><a href="https://arix.pk/arbots" target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue transition-colors">Arbots X ↗</a></li>
               </ul>
             </div>
 
@@ -1043,7 +1052,7 @@ export default function SolutionsPage() {
               <span className="font-bold text-brand-blue uppercase tracking-widest block mb-4">DIRECT INQUIRIES</span>
               <p className="text-slate-600 mb-3 font-body">Engineers review all project submissions directly.</p>
               <a href="mailto:axolutions@arix.pk" className="text-brand-navy font-bold hover:text-brand-blue flex items-center gap-1">
-                axolutions@arix.pk &nearr;
+                axolutions@arix.pk ↗
               </a>
             </div>
           </div>

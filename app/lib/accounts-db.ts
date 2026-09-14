@@ -7,10 +7,6 @@ const connectionString =
   process.env.DATABASE_URL ||
   process.env.POSTGRES_URL;
 
-if (!connectionString) {
-  throw new Error("ARIX accounts requires a PostgreSQL connection string.");
-}
-
 const globalForAccounts = globalThis as typeof globalThis & {
   arixAccountsPool?: Pool;
   arixAccountsReady?: Promise<void>;
@@ -18,7 +14,11 @@ const globalForAccounts = globalThis as typeof globalThis & {
 
 export const accountsPool =
   globalForAccounts.arixAccountsPool ??
-  new Pool({ connectionString, max: 5, idleTimeoutMillis: 20_000 });
+  new Pool({
+    connectionString: connectionString || "postgresql://postgres:postgres@127.0.0.1:5432/postgres",
+    max: 5,
+    idleTimeoutMillis: 20_000,
+  });
 
 if (process.env.NODE_ENV !== "production") {
   globalForAccounts.arixAccountsPool = accountsPool;
@@ -112,6 +112,9 @@ const defaultAccounts = [
 ];
 
 export async function ensureAccountsSchema() {
+  if (!connectionString) {
+    throw new Error("ARIX accounts requires a PostgreSQL connection string.");
+  }
   if (!globalForAccounts.arixAccountsReady) {
     globalForAccounts.arixAccountsReady = (async () => {
       for (const statement of schemaStatements) {
@@ -352,16 +355,23 @@ export async function getFinanceSnapshot(): Promise<FinanceSnapshot> {
 }
 
 export async function getPublicFinanceTotals() {
-  await ensureAccountsSchema();
-  const result = await accountsPool.query(`
-    SELECT
-      COALESCE(SUM(CASE WHEN kind = 'revenue' AND status = 'posted' THEN amount_paisa ELSE 0 END), 0) AS revenue,
-      COALESCE(SUM(CASE WHEN kind = 'investment' AND status = 'posted' THEN amount_paisa ELSE 0 END), 0) AS investment
-    FROM arix_journal_entries
-  `);
-  const row = result.rows[0] ?? {};
-  return {
-    revenue: Number(row.revenue || 0) / 100,
-    investment: Number(row.investment || 0) / 100,
-  };
+  if (!connectionString) {
+    return { revenue: 0, investment: 0 };
+  }
+  try {
+    await ensureAccountsSchema();
+    const result = await accountsPool.query(`
+      SELECT
+        COALESCE(SUM(CASE WHEN kind = 'revenue' AND status = 'posted' THEN amount_paisa ELSE 0 END), 0) AS revenue,
+        COALESCE(SUM(CASE WHEN kind = 'investment' AND status = 'posted' THEN amount_paisa ELSE 0 END), 0) AS investment
+      FROM arix_journal_entries
+    `);
+    const row = result.rows[0] ?? {};
+    return {
+      revenue: Number(row.revenue || 0) / 100,
+      investment: Number(row.investment || 0) / 100,
+    };
+  } catch {
+    return { revenue: 0, investment: 0 };
+  }
 }
