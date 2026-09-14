@@ -347,24 +347,23 @@ html[data-theme="dark"] .brand-logo { background: #f5f7f1; box-shadow: inset 0 0
 .origin-card-shade { position: absolute; z-index: 1; inset: 0; background: linear-gradient(0deg, rgba(5,7,4,.92) 0%, rgba(5,7,4,.32) 58%, rgba(5,7,4,.05) 100%); }
 .origin-card.wheat > span, .origin-card.wheat > strong, .origin-card.wheat > p { position: relative; z-index: 2; }
 .team-streams { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 38px; }
-.subcompanies-orbit { position: absolute; z-index: 1; width: 560px; height: 560px; right: 5vw; top: 105px; border: 1px solid color-mix(in srgb, var(--lime) 26%, transparent); border-radius: 50%; box-shadow: 0 0 0 70px color-mix(in srgb, var(--lime) 5%, transparent), 0 0 0 140px color-mix(in srgb, var(--lime) 3%, transparent); pointer-events: none; }
-.subcompanies-orbit:before { content: ""; position: absolute; inset: 50%; width: 170px; border-top: 1px dashed color-mix(in srgb, var(--lime) 55%, transparent); transform-origin: left; transform: rotate(35deg); }
+.subcompanies-orbit { position: absolute; z-index: 1; width: 520px; height: 520px; right: -40px; top: 90px; border: 1px solid color-mix(in srgb, var(--lime) 26%, transparent); border-radius: 50%; box-shadow: 0 0 0 70px color-mix(in srgb, var(--lime) 5%, transparent), 0 0 0 140px color-mix(in srgb, var(--lime) 3%, transparent); pointer-events: none; }
+.subcompanies-orbit:before { content: ""; position: absolute; inset: 50%; width: 150px; border-top: 1px dashed color-mix(in srgb, var(--lime) 55%, transparent); transform-origin: left; transform: rotate(35deg); }
 .subcompanies-orbit > div { position: absolute; display: flex; align-items: center; gap: 9px; font-family: var(--font-geist-mono), monospace; font-size: 9px; text-transform: uppercase; letter-spacing: .12em; color: var(--page-hero-sub); }
-.subcompanies-orbit > div:nth-child(1) { left: -32px; top: 48%; }
-.subcompanies-orbit > div:nth-child(2) { right: -30px; bottom: 35%; }
+.subcompanies-orbit > div:nth-child(1) { left: 60px; top: 18%; }
+.subcompanies-orbit > div:nth-child(2) { right: 20px; bottom: 35%; }
 .subcompanies-orbit i { width: 12px; height: 12px; border-radius: 50%; background: var(--page-hero-bg); border: 3px solid var(--lime); box-shadow: 0 0 0 7px color-mix(in srgb, var(--lime) 11%, transparent); }
 
 .venture-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.venture-card { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; padding: 48px 42px; background: var(--panel); border: 1px solid var(--line); transition: border-color .3s ease, transform .3s ease, background .3s ease, box-shadow .3s ease; }
+.venture-card { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 340px; padding: 44px 40px; background: var(--panel); border: 1px solid var(--line); transition: border-color .3s ease, transform .3s ease, background .3s ease, box-shadow .3s ease; }
 .venture-card:hover { border-color: var(--lime); transform: translateY(-4px); background: var(--ink-soft); box-shadow: 0 16px 48px -12px rgba(0,0,0,.45); }
-.venture-card-tag { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 32px; font-family: var(--font-geist-mono), monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--lime); }
+.venture-card-tag { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; font-family: var(--font-geist-mono), monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--lime); }
 .venture-card-tag span { display: inline-flex; align-items: center; gap: 8px; }
 .venture-card-tag span i { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); display: inline-block; }
 .venture-card-tag strong { font-weight: normal; color: var(--muted); font-size: 9px; }
-.venture-card h3 { margin: 0 0 16px; font-size: clamp(32px, 3.6vw, 48px); letter-spacing: -.04em; text-transform: uppercase; line-height: 1; }
-.venture-desc { margin: 0 0 32px; color: var(--muted); font-size: 16px; line-height: 1.65; max-width: 520px; }
-.venture-specs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; margin-top: auto; }
-.venture-specs span { padding: 8px 12px; border: 1px solid var(--line); font-family: var(--font-geist-mono), monospace; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--text); }
+.venture-card h3 { margin: 0 0 14px; font-size: clamp(28px, 3.2vw, 42px); letter-spacing: -.04em; text-transform: uppercase; line-height: 1; }
+.venture-desc { margin: 0 0 28px; color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 520px; }
+.venture-card > div:last-child { margin-top: auto; }
 .venture-card .button { align-self: flex-start; }
 
 .contact-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 100px; align-items: start; }
