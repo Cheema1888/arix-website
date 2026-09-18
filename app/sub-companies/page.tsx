@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Sub-companies",
-  description: "Why a bootstrapped physical AI robotics company creates focused ventures: exploring Arbots X and Axolutions.",
+  description: "Why a bootstrapped physical AI robotics company creates focused ventures: exploring VBot and Axolutions.",
 };
 
 export default function SubCompaniesPage() {
@@ -50,21 +50,21 @@ export default function SubCompaniesPage() {
         </div>
 
         <div className="venture-grid">
-          {/* Arbots X Card */}
+          {/* VBot Card */}
           <article className="venture-card">
             <div>
               <div className="venture-card-tag">
                 <span><i /> Venture 01</span>
                 <strong>Consumer &amp; Companion Robotics</strong>
               </div>
-              <h3>Arbots X</h3>
+              <h3>VBot</h3>
               <p className="venture-desc">
                 Companion robotics powered by emotive physical AI and voice interaction for desktop and everyday spaces.
               </p>
             </div>
             <div>
               <Link className="button button-primary" href="/arbots">
-                Explore Arbots X <span>↗</span>
+                Explore VBot <span>↗</span>
               </Link>
             </div>
           </article>

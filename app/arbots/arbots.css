@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
 .arbots-site {
   --ab-bg: #000;
   --ab-bg-soft: #080808;
@@ -33,7 +35,12 @@
 .arbots-brand i { display: grid; place-items: center; width: 31px; height: 31px; margin-left: 4px; border: 1px solid rgba(255,255,255,.54); color: var(--ab-blue); font-style: normal; box-shadow: inset 0 0 18px rgba(255,255,255,.1), 0 0 20px rgba(255,255,255,.08); }
 .arbots-brand-large { font-size: 30px; }
 .arbots-brand-large i { width: 42px; height: 42px; }
-.arbots-nav-links { display: flex; align-items: center; gap: 34px; font-family: var(--font-geist-mono), monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
+.vbot-nav-logo { display: block; width: 32px; height: 32px; border-radius: 8px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(0,229,255,.4)); transition: transform .25s ease, filter .25s ease; }
+.arbots-brand:hover .vbot-nav-logo { transform: scale(1.05); filter: drop-shadow(0 0 14px rgba(0,229,255,.7)); }
+.vbot-footer-logo { width: 40px; height: 40px; }
+.vbot-brand-text { font-family: var(--font-geist-sans), Arial, sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -.02em; color: #fff; margin-left: 8px; }
+.arbots-brand-large .vbot-brand-text { font-size: 28px; margin-left: 10px; }
+.arbots-nav-links { display: flex; align-items: center; gap: 28px; font-family: var(--font-geist-mono), monospace; font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
 .arbots-nav-links > a { color: #aab4c0; transition: color .25s ease; }
 .arbots-nav-links > a:hover, .arbots-nav-links > a.is-active { color: var(--ab-blue); }
 .arbots-nav-links .arbots-nav-cta { min-height: 42px; display: flex; align-items: center; gap: 30px; padding: 0 15px; color: var(--ab-on-blue); background: var(--ab-blue); }
@@ -402,10 +409,220 @@
 .arbots-v3-x { position: absolute; z-index: 1; left: 50%; top: 48%; width: min(720px,64vw); aspect-ratio: 1; transform: translate(-50%,-50%); background: #fff; clip-path: polygon(2% 2%,24% 2%,50% 36%,76% 2%,98% 2%,65% 50%,98% 98%,76% 98%,50% 64%,24% 98%,2% 98%,35% 50%); filter: drop-shadow(0 0 12px rgba(255,255,255,.78)) drop-shadow(0 0 42px rgba(255,255,255,.4)); animation: arbotsV3Glow 3.4s ease-in-out infinite; }
 .arbots-v3-x:after { content: ""; position: absolute; inset: 6.5%; background: #000; clip-path: inherit; }
 @keyframes arbotsV3Glow { 50% { opacity: .78; filter: drop-shadow(0 0 22px rgba(255,255,255,.88)) drop-shadow(0 0 68px rgba(255,255,255,.48)); } }
-.arbots-v3-bot { position: absolute; z-index: 3; left: 50%; top: 48%; width: clamp(250px,25vw,340px); aspect-ratio: .96; transform: translate(-50%,-50%); overflow: hidden; border-radius: 38%; background: #000; box-shadow: 0 0 0 13px rgba(0,0,0,.82),0 20px 70px #000; animation: arbotsV3Float 4s ease-in-out infinite; }
-.arbots-v3-bot:after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 34px 8px #000; pointer-events: none; }
-.arbots-v3-bot img { object-fit: cover; object-position: 50% 52%; filter: grayscale(1) contrast(1.1) brightness(.95); }
-@keyframes arbotsV3Float { 50% { transform: translate(-50%,calc(-50% - 8px)); } }
+.arbots-v3-v { position: absolute; z-index: 1; left: 50%; top: 48%; width: min(840px,76vw); aspect-ratio: 922 / 567; transform: translate(-50%,-50%); color: #fff; filter: drop-shadow(0 0 14px rgba(255,255,255,.82)) drop-shadow(0 0 46px rgba(255,255,255,.42)); animation: arbotsV3Glow 3.4s ease-in-out infinite; pointer-events: none; }
+.arbots-v3-v svg { width: 100%; height: 100%; display: block; }
+.arbots-v3-bot { position: absolute; z-index: 3; left: 50%; top: 48%; width: clamp(260px,26vw,360px); aspect-ratio: 731 / 760; transform: translate(-50%,-50%); filter: drop-shadow(0 24px 38px rgba(0,0,0,.92)) drop-shadow(0 0 24px rgba(0,229,255,.18)); animation: vbotRiseUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both; pointer-events: none; }
+.arbots-v3-bot img { object-fit: contain; }
+.vbot-stage { position: relative; width: 100%; height: 100%; animation: arbotsV3Float 4.2s ease-in-out infinite 1.2s; }
+.vbot-eyes {
+  position: absolute;
+  left: 28.728%;
+  top: 36.184%;
+  width: 38.304%;
+  height: 17.763%;
+  transform-origin: center 50%;
+  animation: vbotNaturalBlink 2.8s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(0,229,255,.85)) drop-shadow(0 0 18px rgba(0,229,255,.45));
+}
+.vbot-eye {
+  position: absolute;
+  top: 0;
+  width: 35.714%;
+  height: 100%;
+}
+.vbot-eye img { object-fit: contain; }
+.vbot-eye.left { left: 0; }
+.vbot-eye.right { right: 0; }
+
+/* Camera hardware indicator on left corner of LCD bezel */
+.vbot-camera-dot {
+  position: absolute;
+  left: 23.2%;
+  top: 32.8%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00FF66;
+  box-shadow: 0 0 4px #00FF66, 0 0 10px rgba(0, 255, 102, 0.85), 0 0 16px rgba(0, 255, 102, 0.45);
+  animation: vbotCameraPulse 3s ease-in-out infinite;
+  z-index: 4;
+  pointer-events: none;
+}
+
+@keyframes vbotCameraPulse {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+    box-shadow: 0 0 4px #00FF66, 0 0 10px rgba(0, 255, 102, 0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 0 6px #00FF66, 0 0 14px rgba(0, 255, 102, 0.95), 0 0 20px rgba(0, 255, 102, 0.5);
+  }
+}
+
+@keyframes vbotRiseUp {
+  0% { transform: translate(-50%, calc(-50% + 200px)); opacity: 0; }
+  100% { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@keyframes arbotsV3Float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* VBot Streaming Dot-Matrix Speech Bubble Wrapper */
+.vbot-speech-bubble {
+  position: absolute;
+  z-index: 10;
+  left: calc(50% + 270px);
+  top: calc(48% + 105px);
+  pointer-events: auto;
+  user-select: none;
+}
+
+/* The Bubble Pill Capsule — expands from left to right right after dots finish */
+.vbot-bubble-pill {
+  padding: 13px 26px 13px 24px;
+  background: #000000;
+  border: 1.5px solid #00E5FF;
+  border-radius: 9999px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.95), 0 0 20px rgba(0, 229, 255, 0.35);
+  transform-origin: left center;
+  animation: vbotBubbleExpandLeftToRight 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 0.52s;
+}
+
+@keyframes vbotBubbleExpandLeftToRight {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.15) scaleY(0.4);
+  }
+  60% {
+    opacity: 1;
+    transform: scaleX(1.06) scaleY(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.vbot-bubble-content {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.vbot-bubble-text {
+  font-family: 'Silkscreen', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #00E5FF;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px rgba(0, 229, 255, 0.95), 0 0 16px rgba(0, 229, 255, 0.6);
+}
+
+.vbot-bubble-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  margin-left: 5px;
+  background: #00E5FF;
+  box-shadow: 0 0 8px #00E5FF;
+  animation: vbotCursorBlink 0.75s steps(2, start) infinite;
+}
+
+.vbot-bubble-cursor.typing {
+  animation: none;
+  opacity: 1;
+}
+
+/* 4 curved, same-sized high-quality matrix dots connecting from lower cheek to bubble */
+.vbot-speech-tail.desktop-only {
+  position: absolute;
+  right: calc(100% + 6px);
+  top: -55px;
+  width: 144px;
+  height: 88px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.vbot-speech-tail.mobile-only {
+  display: none;
+}
+
+.vbot-matrix-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: vbotMatrixDotIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.85)) drop-shadow(0 0 12px rgba(0, 229, 255, 0.45));
+}
+
+.vbot-dot-ring {
+  fill: #000000;
+  stroke: #00E5FF;
+  stroke-width: 1.75;
+}
+
+.vbot-dot-core {
+  fill: #00E5FF;
+  filter: drop-shadow(0 0 3px #00E5FF);
+}
+
+.vbot-matrix-dot.dot-1 { animation-delay: 0.10s; }
+.vbot-matrix-dot.dot-2 { animation-delay: 0.20s; }
+.vbot-matrix-dot.dot-3 { animation-delay: 0.30s; }
+.vbot-matrix-dot.dot-4 { animation-delay: 0.40s; }
+
+@keyframes vbotMatrixDotIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  100% {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+}
+
+.vbot-speech-tail {
+  animation: vbotMatrixTailGlow 3.5s ease-in-out infinite 0.4s;
+}
+
+@keyframes vbotMatrixTailGlow {
+  0%, 100% {
+    opacity: 0.92;
+    filter: drop-shadow(0 0 3px rgba(0, 229, 255, 0.5));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.9)) drop-shadow(0 0 16px rgba(0, 229, 255, 0.4));
+  }
+}
+
+@keyframes vbotBubblePop {
+  0% { transform: scale(0.65); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes vbotCursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes vbotNaturalBlink {
+  0%, 44%, 50%, 100% { transform: scaleY(1); opacity: 1; }
+  47% { transform: scaleY(0.04); opacity: 0.6; }
+}
 .arbots-v3-intro { position: absolute; z-index: 5; left: max(30px,calc((100vw - 1240px)/2)); bottom: 54px; max-width: 430px; }
 .arbots-v3-intro p { margin: 0 0 12px; color: #aaa; font-family: var(--font-geist-mono),monospace; font-size: 9px; letter-spacing: .17em; text-transform: uppercase; }
 .arbots-v3-intro h1 { margin: 0 0 13px; color: #fff; font-size: clamp(48px,5.5vw,82px); line-height: .9; letter-spacing: -.06em; text-transform: uppercase; }
@@ -455,7 +672,7 @@
 
 @media (max-width: 760px) {
   .arbots-v3-hero { min-height: 860px; }
-  .arbots-v3-x { top: 39%; width: 96vw; }
+  .arbots-v3-x, .arbots-v3-v { top: 39%; width: 96vw; }
   .arbots-v3-bot { top: 39%; width: 61vw; }
   .arbots-v3-intro { left: 20px; right: 20px; bottom: 70px; }
   .arbots-v3-intro h1 { font-size: clamp(47px,14vw,67px); }
@@ -470,9 +687,39 @@
   .arbots-v3-marquee figure { width: 78vw; }
   .arbots-v3-family { flex-direction: column; align-items: flex-start; gap: 16px; }
   .arbots-v3-family > i { transform: rotate(90deg); }
+  .vbot-speech-bubble {
+    left: 50%;
+    top: calc(39% - 150px);
+    transform: translateX(-50%);
+  }
+  .vbot-bubble-pill {
+    padding: 10px 20px;
+    border-radius: 9999px;
+    transform-origin: center bottom;
+  }
+  .vbot-speech-tail.desktop-only {
+    display: none;
+  }
+  .vbot-speech-tail.mobile-only {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 24px;
+    height: 64px;
+    transform: translateX(-50%);
+    overflow: visible;
+    pointer-events: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .arbots-v3-marquee { overflow-x: auto; }
   .arbots-v3-marquee-track { animation: none !important; }
+  .vbot-eyes, .vbot-eye { animation: none !important; }
+  .arbots-v3-bot { animation: none !important; opacity: 1 !important; transform: translate(-50%, -50%) !important; }
+  .vbot-stage { animation: none !important; }
+  .vbot-speech-bubble { animation: none !important; opacity: 1 !important; }
+  .vbot-bubble-cursor { animation: none !important; opacity: 1 !important; }
+  .vbot-matrix-dot, .vbot-speech-tail, .vbot-bubble-pill, .vbot-camera-dot { animation: none !important; opacity: 1 !important; transform: none !important; }
 }

@@ -64,13 +64,13 @@ export function ArbotsSurvey() {
       const response = await fetch("/api/arbots/survey", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...answers, website: form.get("website") }) });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "We could not save your response.");
-      setStatus("success"); setMessage("Thank you. Your response is now part of the X research.");
+      setStatus("success"); setMessage("Thank you. Your response is now part of the VBot research.");
     } catch (error) {
       setStatus("error"); setMessage(error instanceof Error ? error.message : "We could not save your response.");
     }
   }
 
-  if (status === "success") return <div className="arbots-survey-card arbots-survey-success"><span>✓</span><p className="arbots-index">Response saved</p><h3>You helped shape X.</h3><p>{message}</p></div>;
+  if (status === "success") return <div className="arbots-survey-card arbots-survey-success"><span>✓</span><p className="arbots-index">Response saved</p><h3>You helped shape VBot.</h3><p>{message}</p></div>;
 
   return (
     <form className="arbots-survey-card" onSubmit={submit}>
