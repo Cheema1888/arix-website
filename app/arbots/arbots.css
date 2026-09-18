@@ -678,19 +678,40 @@
 }
 
 @media (max-width: 760px) {
-  .arbots-v3-hero { min-height: 860px; }
+  .arbots-v3-hero {
+    height: 100svh;
+    min-height: 100svh;
+    max-height: 100svh;
+  }
   .arbots-v3-x, .arbots-v3-v {
-    top: 45%;
-    width: min(92vw, 420px);
+    top: 39%;
+    width: clamp(280px, 86vw, 360px);
   }
   .arbots-v3-bot {
-    top: calc(45% + 8px);
-    width: clamp(136px, 37vw, 155px);
+    top: calc(39% + 6px);
+    width: clamp(124px, 35vw, 144px);
   }
-  .arbots-v3-intro { left: 20px; right: 20px; bottom: 70px; }
-  .arbots-v3-intro h1 { font-size: clamp(47px,14vw,67px); }
-  .arbots-v3-status { top: 92px; right: 18px; bottom: auto; }
-  .arbots-v3-scroll { bottom: 23px; }
+  .arbots-v3-intro {
+    left: 20px;
+    right: 20px;
+    bottom: 44px;
+  }
+  .arbots-v3-intro h1 {
+    font-size: clamp(36px, 11vw, 52px);
+    margin: 0 0 6px;
+  }
+  .arbots-v3-intro span {
+    font-size: clamp(13px, 3.6vw, 14.5px);
+    line-height: 1.45;
+  }
+  .arbots-v3-status {
+    top: 86px;
+    right: 18px;
+    bottom: auto;
+  }
+  .arbots-v3-scroll {
+    bottom: 14px;
+  }
   .arbots-v3-features,.arbots-v3-creative,.arbots-v3-development { padding-block: 105px; }
   .arbots-v3-heading,.arbots-v3-creative-head { margin-bottom: 48px; }
   .arbots-v3-heading h2,.arbots-v3-creative-head h2,.arbots-v3-development h2,.arbots-v3-survey .arbots-survey-intro h2 { font-size: clamp(43px,13vw,61px); }
@@ -701,25 +722,25 @@
   .arbots-v3-family { flex-direction: column; align-items: flex-start; gap: 16px; }
   .arbots-v3-family > i { transform: rotate(90deg); }
   .vbot-speech-bubble {
-    left: calc(50% + 18px);
-    top: calc(45% + 95px);
+    left: calc(50% + 14px);
+    top: calc(39% + 80px);
     transform: none;
   }
   .vbot-bubble-pill {
-    padding: 9px 18px;
+    padding: 8px 16px;
     border-radius: 9999px;
     transform-origin: left center;
   }
   .vbot-bubble-text {
-    font-size: 13px;
+    font-size: 12.5px;
   }
   .vbot-speech-tail.desktop-only {
     display: block;
     position: absolute;
     right: calc(100% - 15px);
-    top: -48px;
-    width: 64px;
-    height: 48px;
+    top: -44px;
+    width: 60px;
+    height: 44px;
     overflow: visible;
     pointer-events: none;
   }
