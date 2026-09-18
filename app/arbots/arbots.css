@@ -670,10 +670,23 @@
 .arbots-v3-survey { background: #060606; }
 .arbots-v3-survey .arbots-survey-card { border-radius: 4px; background: #090909; }
 
+@media (max-width: 950px) and (min-width: 761px) {
+  .vbot-speech-bubble {
+    left: calc(50% + 190px);
+    top: calc(48% + 80px);
+  }
+}
+
 @media (max-width: 760px) {
   .arbots-v3-hero { min-height: 860px; }
-  .arbots-v3-x, .arbots-v3-v { top: 39%; width: 96vw; }
-  .arbots-v3-bot { top: 39%; width: 61vw; }
+  .arbots-v3-x, .arbots-v3-v {
+    top: 45%;
+    width: min(92vw, 420px);
+  }
+  .arbots-v3-bot {
+    top: calc(45% + 8px);
+    width: clamp(136px, 37vw, 155px);
+  }
   .arbots-v3-intro { left: 20px; right: 20px; bottom: 70px; }
   .arbots-v3-intro h1 { font-size: clamp(47px,14vw,67px); }
   .arbots-v3-status { top: 92px; right: 18px; bottom: auto; }
@@ -688,28 +701,30 @@
   .arbots-v3-family { flex-direction: column; align-items: flex-start; gap: 16px; }
   .arbots-v3-family > i { transform: rotate(90deg); }
   .vbot-speech-bubble {
-    left: 50%;
-    top: calc(39% - 150px);
-    transform: translateX(-50%);
+    left: calc(50% + 18px);
+    top: calc(45% + 95px);
+    transform: none;
   }
   .vbot-bubble-pill {
-    padding: 10px 20px;
+    padding: 9px 18px;
     border-radius: 9999px;
-    transform-origin: center bottom;
+    transform-origin: left center;
+  }
+  .vbot-bubble-text {
+    font-size: 13px;
   }
   .vbot-speech-tail.desktop-only {
-    display: none;
-  }
-  .vbot-speech-tail.mobile-only {
     display: block;
     position: absolute;
-    left: 50%;
-    top: 100%;
-    width: 24px;
-    height: 64px;
-    transform: translateX(-50%);
+    right: calc(100% - 15px);
+    top: -48px;
+    width: 64px;
+    height: 48px;
     overflow: visible;
     pointer-events: none;
+  }
+  .vbot-speech-tail.mobile-only {
+    display: none;
   }
 }
 
