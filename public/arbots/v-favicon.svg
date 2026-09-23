@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <filter id="v-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ffffff" flood-opacity="1" />
+      <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="#ffffff" flood-opacity="0.85" />
+      <feDropShadow dx="0" dy="0" stdDeviation="40" flood-color="#ffffff" flood-opacity="0.55" />
+    </filter>
+  </defs>
+  <g transform="translate(46, 127) scale(0.4555)" filter="url(#v-glow)">
+    <path
+      d="M 0 0 L 303 0 L 461 204 L 618 0 L 922 0 L 461 567 Z M 101 48 L 461 491 L 821 48 L 642 48 L 461 283 L 280 48 Z"
+      fill="#ffffff"
+      fill-rule="evenodd"
+    />
+  </g>
+</svg>

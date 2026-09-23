@@ -35,9 +35,10 @@
 .arbots-brand i { display: grid; place-items: center; width: 31px; height: 31px; margin-left: 4px; border: 1px solid rgba(255,255,255,.54); color: var(--ab-blue); font-style: normal; box-shadow: inset 0 0 18px rgba(255,255,255,.1), 0 0 20px rgba(255,255,255,.08); }
 .arbots-brand-large { font-size: 30px; }
 .arbots-brand-large i { width: 42px; height: 42px; }
-.vbot-nav-logo { display: block; width: 32px; height: 32px; border-radius: 8px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(0,229,255,.4)); transition: transform .25s ease, filter .25s ease; }
-.arbots-brand:hover .vbot-nav-logo { transform: scale(1.05); filter: drop-shadow(0 0 14px rgba(0,229,255,.7)); }
-.vbot-footer-logo { width: 40px; height: 40px; }
+.vbot-nav-v { display: inline-flex; align-items: center; justify-content: center; width: 32px; aspect-ratio: 922 / 567; color: #ffffff; filter: drop-shadow(0 0 6px rgba(255,255,255,.95)) drop-shadow(0 0 16px rgba(255,255,255,.65)); transition: transform .25s ease, filter .25s ease; }
+.vbot-nav-v svg { width: 100%; height: 100%; display: block; }
+.arbots-brand:hover .vbot-nav-v { transform: scale(1.08); filter: drop-shadow(0 0 8px rgba(255,255,255,1)) drop-shadow(0 0 22px rgba(255,255,255,.9)); }
+.vbot-footer-v { width: 42px; }
 .vbot-brand-text { font-family: var(--font-geist-sans), Arial, sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -.02em; color: #fff; margin-left: 8px; }
 .arbots-brand-large .vbot-brand-text { font-size: 28px; margin-left: 10px; }
 .arbots-nav-links { display: flex; align-items: center; gap: 28px; font-family: var(--font-geist-mono), monospace; font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
@@ -199,8 +200,8 @@
 .arbots-team-hero .arbots-shell { position: relative; z-index: 3; }
 .arbots-team-hero h1 { max-width: 1040px; margin: 24px 0 0; font-size: clamp(62px,8vw,116px); line-height: .88; letter-spacing: -.07em; text-transform: uppercase; }
 .arbots-team-hero h1 span { color: var(--ab-blue); }
-.arbots-team-hero p:last-child { max-width: 620px; margin: 30px 0 0; color: var(--ab-muted); font-size: 18px; line-height: 1.65; }
-.arbots-team-x { position: absolute; z-index: 1; right: 1vw; bottom: -105px; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.3); font-size: 760px; line-height: 1; font-weight: 750; text-shadow: 0 0 60px rgba(255,255,255,.1); }
+.arbots-team-v { position: absolute; z-index: 1; right: -2vw; top: 52%; transform: translateY(-50%); width: min(720px, 54vw); aspect-ratio: 922 / 567; color: #fff; filter: drop-shadow(0 0 14px rgba(255,255,255,.82)) drop-shadow(0 0 46px rgba(255,255,255,.42)); animation: arbotsV3Glow 3.4s ease-in-out infinite; pointer-events: none; }
+.arbots-team-v svg { width: 100%; height: 100%; display: block; }
 .arbots-parent { border-bottom: 1px solid var(--ab-line); }
 .arbots-parent-grid { display: grid; grid-template-columns: 1fr .75fr; gap: 110px; align-items: start; }
 .arbots-parent-grid > div:last-child > p { margin: 0 0 22px; color: var(--ab-muted); font-size: 17px; line-height: 1.7; }
@@ -402,7 +403,7 @@
   .arbots-site *, .arbots-site *:before, .arbots-site *:after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
 
-/* Arbots X v3 — intentionally simple: hero, features, creativity, status, survey. */
+/* Arbots X v3: intentionally simple: hero, features, creativity, status, survey. */
 .arbots-v3 { background: #000; }
 .arbots-v3-hero { position: relative; min-height: 100svh; overflow: hidden; background: #000; }
 .arbots-v3-hero:before { content: ""; position: absolute; inset: 0; opacity: .22; background-image: radial-gradient(circle at 12% 22%,#fff 0 1px,transparent 1.3px),radial-gradient(circle at 78% 19%,#fff 0 1px,transparent 1.3px),radial-gradient(circle at 89% 71%,#fff 0 1px,transparent 1.3px),radial-gradient(circle at 31% 79%,#fff 0 1px,transparent 1.3px); background-size: 330px 330px,410px 410px,370px 370px,460px 460px; }
@@ -483,7 +484,7 @@
   user-select: none;
 }
 
-/* The Bubble Pill Capsule — expands from left to right right after dots finish */
+/* The Bubble Pill Capsule: expands from left to right right after dots finish */
 .vbot-bubble-pill {
   padding: 13px 26px 13px 24px;
   background: #000000;
@@ -641,7 +642,20 @@
 .arbots-v3-feature > span { font-family: var(--font-geist-mono),monospace; font-size: 9px; letter-spacing: .14em; }
 .arbots-v3-feature h3 { margin: 0; font-size: clamp(25px,3vw,40px); line-height: 1; letter-spacing: -.04em; text-transform: uppercase; }
 .arbots-v3-feature p { max-width: 560px; margin: 0; color: #999; font-size: 14px; line-height: 1.7; }
-.arbots-v3-feature:hover p { color: #333; }
+.arbots-v3-ecosystem { padding: 150px 0; border-top: 1px solid var(--ab-line); background: #030303; }
+.arbots-v3-ecosystem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+.arbots-v3-eco-card { padding: 36px 32px; border: 1px solid var(--ab-line); background: #080808; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; transition: border-color .25s ease, transform .25s ease; }
+.arbots-v3-eco-card:hover { border-color: rgba(255,255,255,.45); transform: translateY(-3px); }
+.arbots-v3-eco-tier { color: var(--ab-blue); font-family: var(--font-geist-mono), monospace; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; }
+.arbots-v3-eco-tier span { color: #666; font-size: 9px; }
+.arbots-v3-eco-card h3 { margin: 0 0 16px; font-size: clamp(24px, 2.5vw, 32px); line-height: 1.05; letter-spacing: -.03em; text-transform: uppercase; color: #fff; }
+.arbots-v3-eco-card p { margin: 0 0 24px; color: #999; font-size: 14px; line-height: 1.65; }
+.arbots-v3-eco-specs { list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(255,255,255,.08); padding-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.arbots-v3-eco-specs li { color: #777; font-family: var(--font-geist-mono), monospace; font-size: 11px; letter-spacing: .04em; display: flex; align-items: center; gap: 8px; }
+.arbots-v3-eco-specs li i { width: 4px; height: 4px; border-radius: 50%; background: #fff; opacity: .7; }
+.arbots-v3-mvp-callout { margin-top: 42px; padding: 22px 28px; border-left: 2px solid #fff; background: rgba(255,255,255,.03); }
+.arbots-v3-mvp-callout p { max-width: 860px; margin: 0; color: #888; font-size: 13.5px; line-height: 1.65; }
+.arbots-v3-mvp-callout strong { display: block; color: #fff; font-family: var(--font-geist-sans), Arial, sans-serif; font-size: 18px; font-weight: 700; line-height: 1.35; letter-spacing: -.015em; margin-bottom: 8px; }
 
 .arbots-v3-creative { padding: 150px 0; overflow: hidden; border-top: 1px solid var(--ab-line); background: #070707; }
 .arbots-v3-creative-head { margin-bottom: 70px; }
@@ -718,6 +732,11 @@
   .arbots-v3-feature { min-height: 0; grid-template-columns: 38px 1fr; gap: 10px 14px; padding: 30px 0; }
   .arbots-v3-feature p { grid-column: 2; }
   .arbots-v3-feature:hover { padding-inline: 12px; }
+  .arbots-v3-ecosystem { padding-block: 105px; }
+  .arbots-v3-ecosystem-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
+  .arbots-v3-eco-card { min-height: auto; padding: 28px 22px; }
+  .arbots-v3-mvp-callout { margin-top: 28px; padding: 18px 20px; }
+  .arbots-team-v { right: 50%; top: 32%; transform: translate(50%, -50%); width: min(420px, 86vw); }
   .arbots-v3-marquee figure { width: 78vw; }
   .arbots-v3-family { flex-direction: column; align-items: flex-start; gap: 16px; }
   .arbots-v3-family > i { transform: rotate(90deg); }

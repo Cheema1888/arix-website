@@ -15,7 +15,7 @@ export function ContactForm({ initialEmail = "", initialInterest = "Pilot partne
     const senderEmail = String(data.get("email") ?? "").trim();
     const interest = String(data.get("interest") ?? "General inquiry");
     const message = String(data.get("message") ?? "").trim();
-    const subject = `ARIX enquiry — ${interest} — ${firstName} ${lastName}`;
+    const subject = `ARIX enquiry: ${interest}: ${firstName} ${lastName}`;
     const body = [`Name: ${firstName} ${lastName}`, `Email: ${senderEmail}`, `Interest: ${interest}`, "", "Message:", message].join("\n");
     const url = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setDraftUrl(url);

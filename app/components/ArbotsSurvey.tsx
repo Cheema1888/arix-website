@@ -3,15 +3,26 @@
 import { FormEvent, useMemo, useState } from "react";
 
 const questions = {
-  profile: ["School student", "University student", "Working professional", "Business owner", "Parent", "Other"],
-  price: ["Below PKR 5,000", "PKR 5,000–7,499", "PKR 7,500–9,999", "PKR 10,000–14,999", "PKR 15,000–19,999", "PKR 20,000 or above", "I would not buy it"],
-  languages: ["English", "Urdu", "Urdu-English mixed conversation", "Punjabi", "Pashto", "Other"],
-  features: ["Voice-to-voice conversation", "“Hey Chotu” wake word", "Personal memory", "Reminders and alarms", "Animated face and expressions", "Customizable outer shells", "Study help", "Offline operation", "Local/private AI processing", "Phone application", "Head movement", "Smart-home control"],
-  power: ["Plug-in only at a lower price", "Rechargeable battery at a higher price", "Both options should be available", "No preference"],
+  profile: ["Adult child caring for elderly parent", "Living with elderly family", "Senior citizen (60+)", "Professional caregiver or nurse", "Healthcare / medical professional", "Other"],
+  price: ["Below PKR 10,000", "PKR 10,000 to 14,999", "PKR 15,000 to 19,999", "PKR 20,000 to 24,999", "PKR 25,000 or above", "I would not buy it"],
+  languages: ["English", "Urdu", "Urdu English mixed", "Punjabi", "Pashto", "Other"],
+  features: [
+    "24/7 Vision based fall detection",
+    "Offline medication reminders",
+    "Physical red emergency SOS button",
+    "Spoken check in (“Are you alright?”)",
+    "Simultaneous family emergency call ring",
+    "One way video caregiver room monitor",
+    "Voice clinical routine setup in mobile app",
+    "Empathetic cognitive daily conversations",
+    "Local hardware privacy protection",
+    "Zero compulsory monthly subscription",
+  ],
+  power: ["Continuous plug in (stationary bedside or desk)", "Rechargeable battery", "Both options should be available", "No preference"],
   subscription: ["Much more likely", "Slightly more likely", "No difference", "Not sure"],
-  premium: ["Nothing", "Below PKR 250", "PKR 250–499", "PKR 500–999", "PKR 1,000 or above"],
-  purchaseFor: ["Myself", "A student", "A child", "A parent or elderly relative", "A friend or partner", "As a gift", "I would not purchase it"],
-  concerns: ["Price", "Privacy", "Voice-recognition accuracy", "Slow AI responses", "Needing a computer or phone nearby", "Battery life", "Internet dependency", "Audio quality", "Durability", "Product becoming boring after some time"],
+  premium: ["Nothing, prefer one time purchase", "Below PKR 500", "PKR 500 to 999", "PKR 1,000 to 1,999", "PKR 2,000 or above"],
+  purchaseFor: ["My elderly mother or father", "Grandparent or elderly relative", "Myself for independent living", "A patient or client in care", "As a gift for family", "I would not purchase it"],
+  concerns: ["False alarm frequency", "Camera privacy in the room", "Elderly parent resistance to technology", "Internet or home connection unreliability", "Voice recognition with elderly speech or accents", "Hardware durability", "Price and affordability"],
 };
 
 type SurveyState = {
@@ -79,7 +90,7 @@ export function ArbotsSurvey() {
 
       {step === 0 && <div className="arbots-survey-step">
         <fieldset><legend><small>01</small> Which option best describes you?</legend><RadioGroup name="profile" value={answers.profile} options={questions.profile} onChange={setOne} />{answers.profile === "Other" && <input className="arbots-other-input" value={answers.profileOther} onChange={event => setOne("profileOther", event.target.value)} placeholder="Please specify" aria-label="Other description" />}</fieldset>
-        <fieldset><legend><small>02</small> How interested would you be in owning a small AI-powered personal companion?</legend><div className="arbots-scale" aria-label="Interest from 1 to 5">{[1,2,3,4,5].map(number => <label className={answers.interest === String(number) ? "is-selected" : ""} key={number}><input type="radio" name="interest" value={number} checked={answers.interest === String(number)} onChange={() => setOne("interest", String(number))} /><span>{number}</span></label>)}</div><div className="arbots-scale-labels"><span>Not interested</span><span>Very interested</span></div></fieldset>
+        <fieldset><legend><small>02</small> How interested would you be in an ambient elder care companion robot for your family?</legend><div className="arbots-scale" aria-label="Interest from 1 to 5">{[1,2,3,4,5].map(number => <label className={answers.interest === String(number) ? "is-selected" : ""} key={number}><input type="radio" name="interest" value={number} checked={answers.interest === String(number)} onChange={() => setOne("interest", String(number))} /><span>{number}</span></label>)}</div><div className="arbots-scale-labels"><span>Not interested</span><span>Very interested</span></div></fieldset>
         <fieldset><legend><small>03</small> Who would you most likely purchase it for?</legend><RadioGroup name="purchaseFor" value={answers.purchaseFor} options={questions.purchaseFor} onChange={setOne} /></fieldset>
       </div>}
 
@@ -101,7 +112,7 @@ export function ArbotsSurvey() {
         {step > 0 && <button type="button" className="arbots-survey-back" onClick={() => { setMessage(""); setStep(current => current - 1); }}>Back</button>}
         {step < 2 ? <button type="button" className="arbots-survey-next" onClick={next}>Continue <span>→</span></button> : <button type="submit" className="arbots-survey-next" disabled={status === "sending"}>{status === "sending" ? "Saving…" : "Submit response"} <span>↗</span></button>}
       </div>
-      <p className="arbots-privacy-note">Anonymous product research. We store only the answers above—no name, email, phone number, or advertising profile.</p>
+      <p className="arbots-privacy-note">Anonymous product research. We store only the answers above: no name, email, phone number, or advertising profile.</p>
     </form>
   );
 }

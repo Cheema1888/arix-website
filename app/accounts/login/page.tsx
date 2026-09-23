@@ -25,7 +25,7 @@ export default async function AccountsLoginPage({
           <p className="accounts-kicker">Employee access only</p>
           <h1>One clear view of ARIX finances.</h1>
           <p>
-            Revenue, investment, spending, and account balances—protected for the ARIX team and backed by a permanent audit trail.
+            Revenue, investment, spending, and account balances, protected for the ARIX team and backed by a permanent audit trail.
           </p>
         </div>
         <small>Private system · Authorized employees only</small>
