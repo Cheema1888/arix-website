@@ -32,7 +32,7 @@ export default function SubCompaniesPage() {
             <span>We fund our mission ourselves.</span>
           </h2>
           <p>
-            ARIX is a bootstrapped robotics company building physical AI for precision agriculture. Developing custom airborne hardware, autonomous flight control, and field-tested computer vision is intensely capital-intensive. Rather than relying on early outside investment or compromising our autonomy, we build focused commercial sub-companies that generate revenue and directly fund our core research. Each venture applies our engineering capabilities to immediate market needs — allowing us to stay self-funded, independent, and committed to long-term breakthroughs in the field.
+            ARIX is a bootstrapped robotics company building physical AI for precision agriculture. Developing custom airborne hardware, autonomous flight control, and field tested computer vision requires serious resources. Rather than relying on early outside investment or compromising our autonomy, we build focused commercial sub companies that generate revenue and directly fund our core research. Each venture applies our engineering capabilities to immediate market needs, allowing us to stay self funded, independent, and committed to long term breakthroughs in the field.
           </p>
         </div>
       </section>
@@ -55,11 +55,11 @@ export default function SubCompaniesPage() {
             <div>
               <div className="venture-card-tag">
                 <span><i /> Venture 01</span>
-                <strong>Consumer &amp; Companion Robotics</strong>
+                <strong>Assistive &amp; Elder Care Robotics</strong>
               </div>
               <h3>VBot</h3>
               <p className="venture-desc">
-                Companion robotics powered by emotive physical AI and voice interaction for desktop and everyday spaces.
+                Intelligent stationary elder care companion robot combining 24/7 vision based fall verification, offline medication scheduling, and ambient family telepresence.
               </p>
             </div>
             <div>
@@ -78,7 +78,7 @@ export default function SubCompaniesPage() {
               </div>
               <h3>Axolutions</h3>
               <p className="venture-desc">
-                High-performance digital platforms, legacy system renovation, and custom AI-engineering solutions.
+                High performance digital platforms, legacy system renovation, and custom AI engineering solutions.
               </p>
             </div>
             <div>

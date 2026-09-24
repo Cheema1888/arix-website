@@ -7,7 +7,7 @@ const services = [
   {
     number: "01",
     title: "SEO audit",
-    summary: "Find what is holding your website back—and turn the findings into a practical growth plan.",
+    summary: "Find what is holding your website back, and turn the findings into a practical growth plan.",
     items: ["Technical and indexability audit", "On-page and content review", "Search opportunity mapping", "Prioritized 90-day roadmap"],
   },
   {

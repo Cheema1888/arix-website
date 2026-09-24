@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+
+const emptySubscribe = () => () => {};
 
 interface VBotSpeechBubbleProps {
   message?: string;
@@ -9,17 +11,20 @@ interface VBotSpeechBubbleProps {
 }
 
 export function VBotSpeechBubble({
-  message = "Hey I'm V",
+  message = "Hi, I'm V",
   typingDelayMs = 640,
   typingSpeedMs = 45,
 }: VBotSpeechBubbleProps) {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-
+    if (!mounted) return;
     const typingTimer = setTimeout(() => {
       setIsTyping(true);
 
@@ -37,7 +42,7 @@ export function VBotSpeechBubble({
     }, typingDelayMs);
 
     return () => clearTimeout(typingTimer);
-  }, [message, typingDelayMs, typingSpeedMs]);
+  }, [mounted, message, typingDelayMs, typingSpeedMs]);
 
   if (!mounted) return null;
 

@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = `${protocol}://${host}`;
   return {
     metadataBase: new URL(origin),
-    title: { default: "ARIX — Physical AI for Precision Agriculture", template: "%s | ARIX" },
+    title: { default: "ARIX: Physical AI for Precision Agriculture", template: "%s | ARIX" },
     description: "ARIX is building an AI-powered crop intelligence system for disease detection, field mapping, and precision agriculture.",
     icons: {
       icon: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
@@ -25,12 +25,12 @@ export async function generateMetadata(): Promise<Metadata> {
       apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
     },
     openGraph: {
-      title: "ARIX — See disease sooner. Treat only what matters.",
+      title: "ARIX: See disease sooner. Treat only what matters.",
       description: "Physical AI for precision agriculture.",
       type: "website",
       images: [{ url: `${origin}/og.png`, width: 1730, height: 941, alt: "ARIX precision agriculture drone scanning a wheat field" }],
     },
-    twitter: { card: "summary_large_image", title: "ARIX — Physical AI for Precision Agriculture", description: "See disease sooner. Treat only what matters.", images: [`${origin}/og.png`] },
+    twitter: { card: "summary_large_image", title: "ARIX: Physical AI for Precision Agriculture", description: "See disease sooner. Treat only what matters.", images: [`${origin}/og.png`] },
   };
 }
 
